@@ -427,8 +427,6 @@ section {
   animation: signalGlow 14s linear infinite;
 }
 
-body.low-power .signal-svg,
-body.low-power .signal-path,
 body.low-power .flow-panel::before,
 body.low-power .flow-panel::after {
   animation: none;
