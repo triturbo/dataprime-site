@@ -30,12 +30,17 @@
   box-sizing: border-box;
 }
 
+html {
+  min-height: 100%;
+  background: linear-gradient(135deg, #050a14 0%, #1a0c08 100%);
+}
+
 body {
   margin: 0;
   font-family: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
   color: var(--ink);
   background: linear-gradient(135deg, #050a14 0%, #1a0c08 100%);
-  min-height: 100vh;
+  min-height: 100%;
   line-height: 1.6;
   overflow-x: hidden;
   position: relative;
@@ -43,8 +48,8 @@ body {
 
 body::before {
   content: "";
-  position: fixed;
-  inset: -25%;
+  position: absolute;
+  inset: 0;
   z-index: 0;
   background-image:
     radial-gradient(circle at 20% 20%, rgba(90, 210, 255, 0.22), transparent 55%),
@@ -58,12 +63,12 @@ body::before {
       transparent 28px
     );
   pointer-events: none;
-  transform: translateY(calc(var(--scroll-y, 0px) * -0.35));
-  transition: transform 0.2s ease-out;
+  background-position: 0 calc(var(--scroll-y, 0px) * 0.25);
+  transition: background-position 0.2s ease-out;
 }
 
 body.low-power::before {
-  transform: translateY(0);
+  background-position: 0 0;
   transition: none;
 }
 
