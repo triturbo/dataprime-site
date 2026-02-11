@@ -7,264 +7,347 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover"
     />
-    <title>Dataprime Ltd | High-Throughput Systems & Packaged Solutions</title>
+    <title>Dataprime Ltd | High-Throughput Systems &amp; Product Architecture</title>
     <meta
       name="description"
-      content="Dataprime designs calm, high-throughput systems and packaged digital solutions for finance, commerce, and data platforms."
+      content="Dataprime designs and delivers high-throughput systems for markets, commerce, and data-heavy products where correctness and speed are non-negotiable."
     />
+    <meta name="theme-color" content="#071126" />
     <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Sora:wght@400;500;600;700;800&amp;display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <canvas id="orbitalCanvas" aria-hidden="true"></canvas>
+    <div class="scroll-progress" aria-hidden="true"><span></span></div>
+    <canvas id="ambientCanvas" aria-hidden="true"></canvas>
+    <div class="noise-overlay" aria-hidden="true"></div>
+
     <div class="page-shell">
       <header class="site-header">
         <a href="#hero" class="brand" data-scroll-to="#hero">
-          <img
-            class="brand-logo"
-            src="./assets/dataprime-logo.svg"
-            alt="Dataprime"
-          />
+          <img class="brand-logo" src="./assets/dataprime-logo.svg" alt="Dataprime" />
           <div class="brand-text">
             <span class="brand-name">Dataprime</span>
             <span class="brand-tag">High-Throughput Systems</span>
           </div>
         </a>
-        <nav class="nav" id="site-nav">
-          <a href="#domains" data-scroll-to="#domains">Domains</a>
-          <a href="#services" data-scroll-to="#services">Services</a>
-          <a href="#approach" data-scroll-to="#approach">Approach</a>
-          <a href="#contact" data-scroll-to="#contact">Contact</a>
-        </nav>
-        <div class="cta">
-          <a class="btn primary" href="#contact" data-scroll-to="#contact">
-            Book a call
-          </a>
-        </div>
+
         <button
           class="nav-toggle"
           aria-label="Toggle menu"
           aria-expanded="false"
           aria-controls="site-nav"
         >
-          <span></span><span></span>
+          <span></span><span></span><span></span>
         </button>
+
+        <nav class="site-nav" id="site-nav">
+          <a href="#domains" data-scroll-to="#domains">Domains</a>
+          <a href="#services" data-scroll-to="#services">Services</a>
+          <a href="#outcomes" data-scroll-to="#outcomes">Outcomes</a>
+          <a href="#approach" data-scroll-to="#approach">Approach</a>
+          <a href="#contact" data-scroll-to="#contact">Contact</a>
+        </nav>
+
+        <a class="btn btn-solid header-cta" href="#contact" data-scroll-to="#contact"
+          >Book a call</a
+        >
       </header>
 
       <main>
-        <section class="hero" id="hero">
-          <div class="hero-content">
-            <p class="eyebrow">Capital-markets discipline. Product speed.</p>
-            <h1>Calm, fast systems for high-stakes platforms.</h1>
-            <p class="lead">
-              Dataprime blends capital-markets rigor with product sensibility to
-              keep complex software clear-headed as scale and latency pressure grow.
+        <section class="hero section" id="hero">
+          <div class="hero-copy">
+            <p class="eyebrow reveal">Dataprime Ltd</p>
+            <h1 class="reveal" data-delay="80">
+              Build systems that stay fast
+              <span class="ink-gradient">when the stakes go up.</span>
+            </h1>
+            <p class="lead reveal" data-delay="140">
+              We bring capital-markets discipline into product engineering, so your team can
+              ship faster while latency, reliability, and auditability remain under control.
             </p>
-            <div class="hero-cta">
-              <a class="btn primary" href="#contact" data-scroll-to="#contact">
-                Request a review
-              </a>
-              <a class="btn ghost" href="#services" data-scroll-to="#services">
-                See services
-              </a>
-            </div>
-            <div class="hero-kpis">
-              <div class="kpi-card reveal">
-                <span>Deterministic cores</span>
-                <p>Latency budgets, fairness, and audit trails baked in.</p>
-              </div>
-              <div class="kpi-card reveal">
-                <span>Resilient by design</span>
-                <p>Failure-aware design with clear operating playbooks.</p>
-              </div>
-              <div class="kpi-card reveal">
-                <span>Packaged + bespoke</span>
-                <p>Reusable accelerators that stay flexible over time.</p>
-              </div>
-            </div>
-          </div>
-          <div class="hero-visual">
-            <div class="flow-panel" data-flow="hero" aria-hidden="true">
-              <svg
-                class="signal-svg"
-                viewBox="0 0 420 320"
-                preserveAspectRatio="none"
-                aria-hidden="true"
+
+            <div class="hero-actions reveal" data-delay="200">
+              <a class="btn btn-solid" href="#contact" data-scroll-to="#contact"
+                >Request architecture review</a
               >
-                <defs>
-                  <path
-                    id="signal-path-a"
-                    d="M298.20,160.00 L297.45,167.02 L295.19,173.97 L291.49,180.77 L286.38,187.33 L279.97,193.60 L272.37,199.50 L263.69,204.97 L254.10,209.94 L243.75,214.37 L232.83,218.20 L221.51,221.39 L210.00,223.91 L198.49,225.73 L187.17,226.83 L176.25,227.20 L165.90,226.83 L156.31,225.73 L147.63,223.91 L140.03,221.39 L133.62,218.20 L128.51,214.37 L124.81,209.94 L122.55,204.97 L121.80,199.50 L122.55,193.60 L124.81,187.33 L128.51,180.77 L133.62,173.97 L140.03,167.02 L147.63,160.00 L156.31,152.98 L165.90,146.03 L176.25,139.23 L187.17,132.67 L198.49,126.40 L210.00,120.50 L221.51,115.03 L232.83,110.06 L243.75,105.63 L254.10,101.80 L263.69,98.61 L272.37,96.09 L279.97,94.27 L286.38,93.17 L291.49,92.80 L295.19,93.17 L297.45,94.27 L298.20,96.09 L297.45,98.61 L295.19,101.80 L291.49,105.63 L286.38,110.06 L279.97,115.03 L272.37,120.50 L263.69,126.40 L254.10,132.67 L243.75,139.23 L232.83,146.03 L221.51,152.98 L210.00,160.00 L198.49,167.02 L187.17,173.97 L176.25,180.77 L165.90,187.33 L156.31,193.60 L147.63,199.50 L140.03,204.97 L133.62,209.94 L128.51,214.37 L124.81,218.20 L122.55,221.39 L121.80,223.91 L122.55,225.73 L124.81,226.83 L128.51,227.20 L133.62,226.83 L140.03,225.73 L147.63,223.91 L156.31,221.39 L165.90,218.20 L176.25,214.37 L187.17,209.94 L198.49,204.97 L210.00,199.50 L221.51,193.60 L232.83,187.33 L243.75,180.77 L254.10,173.97 L263.69,167.02 L272.37,160.00 L279.97,152.98 L286.38,146.03 L291.49,139.23 L295.19,132.67 L297.45,126.40 L298.20,120.50 L297.45,115.03 L295.19,110.06 L291.49,105.63 L286.38,101.80 L279.97,98.61 L272.37,96.09 L263.69,94.27 L254.10,93.17 L243.75,92.80 L232.83,93.17 L221.51,94.27 L210.00,96.09 L198.49,98.61 L187.17,101.80 L176.25,105.63 L165.90,110.06 L156.31,115.03 L147.63,120.50 L140.03,126.40 L133.62,132.67 L128.51,139.23 L124.81,146.03 L122.55,152.98 L121.80,160.00 L122.55,167.02 L124.81,173.97 L128.51,180.77 L133.62,187.33 L140.03,193.60 L147.63,199.50 L156.31,204.97 L165.90,209.94 L176.25,214.37 L187.17,218.20 L198.49,221.39 L210.00,223.91 L221.51,225.73 L232.83,226.83 L243.75,227.20 L254.10,226.83 L263.69,225.73 L272.37,223.91 L279.97,221.39 L286.38,218.20 L291.49,214.37 L295.19,209.94 L297.45,204.97 L298.20,199.50 L297.45,193.60 L295.19,187.33 L291.49,180.77 L286.38,173.97 L279.97,167.02 L272.37,160.00 L263.69,152.98 L254.10,146.03 L243.75,139.23 L232.83,132.67 L221.51,126.40 L210.00,120.50 L198.49,115.03 L187.17,110.06 L176.25,105.63 L165.90,101.80 L156.31,98.61 L147.63,96.09 L140.03,94.27 L133.62,93.17 L128.51,92.80 L124.81,93.17 L122.55,94.27 L121.80,96.09 L122.55,98.61 L124.81,101.80 L128.51,105.63 L133.62,110.06 L140.03,115.03 L147.63,120.50 L156.31,126.40 L165.90,132.67 L176.25,139.23 L187.17,146.03 L198.49,152.98 L210.00,160.00 L221.51,167.02 L232.83,173.97 L243.75,180.77 L254.10,187.33 L263.69,193.60 L272.37,199.50 L279.97,204.97 L286.38,209.94 L291.49,214.37 L295.19,218.20 L297.45,221.39 L298.20,223.91 L297.45,225.73 L295.19,226.83 L291.49,227.20 L286.38,226.83 L279.97,225.73 L272.37,223.91 L263.69,221.39 L254.10,218.20 L243.75,214.37 L232.83,209.94 L221.51,204.97 L210.00,199.50 L198.49,193.60 L187.17,187.33 L176.25,180.77 L165.90,173.97 L156.31,167.02 L147.63,160.00 L140.03,152.98 L133.62,146.03 L128.51,139.23 L124.81,132.67 L122.55,126.40 L121.80,120.50 L122.55,115.03 L124.81,110.06 L128.51,105.63 L133.62,101.80 L140.03,98.61 L147.63,96.09 L156.31,94.27 L165.90,93.17 L176.25,92.80 L187.17,93.17 L198.49,94.27 L210.00,96.09 L221.51,98.61 L232.83,101.80 L243.75,105.63 L254.10,110.06 L263.69,115.03 L272.37,120.50 L279.97,126.40 L286.38,132.67 L291.49,139.23 L295.19,146.03 L297.45,152.98 Z"
-                  />
-                  <path
-                    id="signal-path-b"
-                    d="M286.38,160.00 L293.14,168.77 L297.11,177.39 L298.17,185.72 L296.27,193.60 L291.49,200.91 L283.97,207.52 L273.98,213.31 L261.84,218.20 L247.97,222.08 L232.83,224.91 L216.92,226.63 L200.78,227.20 L184.95,226.63 L169.96,224.91 L156.31,222.08 L144.45,218.20 L134.80,213.31 L127.66,207.52 L123.28,200.91 L121.80,193.60 L123.28,185.72 L127.66,177.39 L134.80,168.77 L144.45,160.00 L156.31,151.23 L169.96,142.61 L184.95,134.28 L200.78,126.40 L216.92,119.09 L232.83,112.48 L247.97,106.69 L261.84,101.80 L273.98,97.92 L283.97,95.09 L291.49,93.37 L296.27,92.80 L298.17,93.37 L297.11,95.09 L293.14,97.92 L286.38,101.80 L277.07,106.69 L265.51,112.48 L252.09,119.09 L237.26,126.40 L221.51,134.28 L205.38,142.61 L189.41,151.23 L174.13,160.00 L160.04,168.77 L147.63,177.39 L137.31,185.72 L129.43,193.60 L124.24,200.91 L121.92,207.52 L122.55,213.31 L126.12,218.20 L132.49,222.08 L141.46,224.91 L152.72,226.63 L165.90,227.20 L180.56,226.63 L196.20,224.91 L212.31,222.08 L228.34,218.20 L243.75,213.31 L258.04,207.52 L270.71,200.91 L281.36,193.60 L289.61,185.72 L295.19,177.39 L297.93,168.77 L297.72,160.00 L294.57,151.23 L288.59,142.61 L279.97,134.28 L269.02,126.40 L256.08,119.09 L241.61,112.48 L226.07,106.69 L210.00,101.80 L193.93,97.92 L178.39,95.09 L163.92,93.37 L150.98,92.80 L140.03,93.37 L131.41,95.09 L125.43,97.92 L122.28,101.80 L122.07,106.69 L124.81,112.48 L130.39,119.09 L138.64,126.40 L149.29,134.28 L161.96,142.61 L176.25,151.23 L191.66,160.00 L207.69,168.77 L223.80,177.39 L239.44,185.72 L254.10,193.60 L267.28,200.91 L278.54,207.52 L287.51,213.31 L293.88,218.20 L297.45,222.08 L298.08,224.91 L295.76,226.63 L290.57,227.20 L282.69,226.63 L272.37,224.91 L259.96,222.08 L245.87,218.20 L230.59,213.31 L214.62,207.52 L198.49,200.91 L182.74,193.60 L167.91,185.72 L154.49,177.39 L142.93,168.77 L133.62,160.00 L126.86,151.23 L122.89,142.61 L121.83,134.28 L123.73,126.40 L128.51,119.09 L136.03,112.48 L146.02,106.69 L158.16,101.80 L172.03,97.92 L187.17,95.09 L203.08,93.37 L219.22,92.80 L235.05,93.37 L250.04,95.09 L263.69,97.92 L275.55,101.80 L285.20,106.69 L292.34,112.48 L296.72,119.09 L298.20,126.40 L296.72,134.28 L292.34,142.61 L285.20,151.23 L275.55,160.00 L263.69,168.77 L250.04,177.39 L235.05,185.72 L219.22,193.60 L203.08,200.91 L187.17,207.52 L172.03,213.31 L158.16,218.20 L146.02,222.08 L136.03,224.91 L128.51,226.63 L123.73,227.20 L121.83,226.63 L122.89,224.91 L126.86,222.08 L133.62,218.20 L142.93,213.31 L154.49,207.52 L167.91,200.91 L182.74,193.60 L198.49,185.72 L214.62,177.39 L230.59,168.77 L245.87,160.00 L259.96,151.23 L272.37,142.61 L282.69,134.28 L290.57,126.40 L295.76,119.09 L298.08,112.48 L297.45,106.69 L293.88,101.80 L287.51,97.92 L278.54,95.09 L267.28,93.37 L254.10,92.80 L239.44,93.37 L223.80,95.09 L207.69,97.92 L191.66,101.80 L176.25,106.69 L161.96,112.48 L149.29,119.09 L138.64,126.40 L130.39,134.28 L124.81,142.61 L122.07,151.23 L122.28,160.00 L125.43,168.77 L131.41,177.39 L140.03,185.72 L150.98,193.60 L163.92,200.91 L178.39,207.52 L193.93,213.31 L210.00,218.20 L226.07,222.08 L241.61,224.91 L256.08,226.63 L269.02,227.20 L279.97,226.63 L288.59,224.91 L294.57,222.08 L297.72,218.20 L297.93,213.31 L295.19,207.52 L289.61,200.91 L281.36,193.60 L270.71,185.72 L258.04,177.39 L243.75,168.77 L228.34,160.00 L212.31,151.23 L196.20,142.61 L180.56,134.28 L165.90,126.40 L152.72,119.09 L141.46,112.48 L132.49,106.69 L126.12,101.80 L122.55,97.92 L121.92,95.09 L124.24,93.37 L129.43,92.80 L137.31,93.37 L147.63,95.09 L160.04,97.92 L174.13,101.80 L189.41,106.69 L205.38,112.48 L221.51,119.09 L237.26,126.40 L252.09,134.28 L265.51,142.61 L277.07,151.23 Z"
-                  />
-                </defs>
-                <use href="#signal-path-a" class="signal-path signal-glow signal-a"></use>
-                <use href="#signal-path-a" class="signal-path signal-a"></use>
-                <use href="#signal-path-b" class="signal-path signal-glow signal-b"></use>
-                <use href="#signal-path-b" class="signal-path signal-b"></use>
+              <a class="btn btn-ghost" href="#services" data-scroll-to="#services"
+                >Explore services</a
+              >
+            </div>
+
+            <ul class="hero-tags reveal" data-delay="240" aria-label="Capabilities">
+              <li>Low-latency architecture</li>
+              <li>Production modernization</li>
+              <li>Risk-aware delivery</li>
+            </ul>
+          </div>
+
+          <aside class="hero-stage reveal" data-delay="220" aria-label="Live system snapshot">
+            <div class="stage-head">
+              <div>
+                <p class="stage-eyebrow">Live Program Cockpit</p>
+                <h2>Cyber agents coordinating code and digital ops in real time.</h2>
+              </div>
+              <span class="stage-pill">Cyber ops live</span>
+            </div>
+
+            <div class="cyber-scene" aria-label="Animated cyber agent operations">
+              <div class="cyber-grid" aria-hidden="true"></div>
+              <div class="code-rain" aria-hidden="true">
+                <span>git push origin codex/latency-router-hardening</span>
+                <span>agent://vega compile orchestration graph --safe-mode</span>
+                <span>diff --stream /core/trade-paths/recovery.ts</span>
+                <span>event bus sync: contracts/states/order.fill.v3</span>
+                <span>ops.scan validating release gates and rollback mesh</span>
+              </div>
+              <svg class="agent-links" viewBox="0 0 520 300" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M80 64 L252 110 L426 68" />
+                <path d="M80 64 L172 232 L346 232 L426 68" />
+                <path d="M252 110 L252 254" />
               </svg>
+              <div class="agent-network">
+                <div class="agent-node node-a">
+                  <p class="agent-name">Agent Vega</p>
+                  <p class="agent-task">refactoring failover orchestration</p>
+                </div>
+                <div class="agent-node node-b">
+                  <p class="agent-name">Agent Nyx</p>
+                  <p class="agent-task">hardening event contracts</p>
+                </div>
+                <div class="agent-node node-c">
+                  <p class="agent-name">Agent Orion</p>
+                  <p class="agent-task">auditing runtime guardrails</p>
+                </div>
+                <div class="agent-node node-d">
+                  <p class="agent-name">Agent Sol</p>
+                  <p class="agent-task">streaming telemetry patches</p>
+                </div>
+              </div>
             </div>
-            <div class="hero-cards">
-              <article class="mini-card reveal">
-                <h3>Architecture review</h3>
-                <p>Pinpoint bottlenecks, ambiguity, and systemic risk.</p>
+
+            <div class="stage-feed" aria-label="Recent delivery highlights">
+              <article>
+                <span class="pulse-dot"></span>
+                <p>Agent swarm merged deterministic retry paths for critical transaction edges.</p>
               </article>
-              <article class="mini-card reveal">
-                <h3>Delivery partner</h3>
-                <p>Hands-on leadership for the flows that matter most.</p>
+              <article>
+                <span class="pulse-dot"></span>
+                <p>Code graph now auto-detects schema drift before release artifacts are promoted.</p>
               </article>
-              <article class="mini-card reveal">
-                <h3>Scaling toolkit</h3>
-                <p>Observability, profiling, and reliability coaching.</p>
+              <article>
+                <span class="pulse-dot"></span>
+                <p>Live observability mesh aligns incidents to service ownership in a single trace.</p>
               </article>
             </div>
+          </aside>
+        </section>
+
+        <section class="signal-loop" aria-label="Operational outcomes">
+          <div class="loop-track">
+            <span>Deterministic throughput</span>
+            <span>Traceable decisions</span>
+            <span>Faster incident recovery</span>
+            <span>Clear ownership boundaries</span>
+            <span>Lower regression risk</span>
+            <span>Deterministic throughput</span>
+            <span>Traceable decisions</span>
+            <span>Faster incident recovery</span>
+            <span>Clear ownership boundaries</span>
+            <span>Lower regression risk</span>
           </div>
         </section>
 
-        <section class="signal-strip" aria-label="Outcomes">
-          <div class="signal-item">Deterministic throughput</div>
-          <div class="signal-item">Auditability by default</div>
-          <div class="signal-item">Real-time decisioning</div>
-          <div class="signal-item">Operational calm</div>
-        </section>
-
-        <section class="domains" id="domains">
-          <div class="section-head">
+        <section class="section" id="domains">
+          <div class="section-head reveal">
             <p class="eyebrow">Domains</p>
-            <h2>Where throughput and correctness are non-negotiable.</h2>
-            <p class="section-lead">
-              We work with teams that run continuous, high-stakes flows: markets,
-              commerce, and data platforms that cannot stutter.
-            </p>
-          </div>
-          <div class="card-grid">
-            <article class="card reveal">
-              <h3>Trading & Markets</h3>
-              <p>Low-latency venues, market infrastructure, and risk overlays.</p>
-            </article>
-            <article class="card reveal">
-              <h3>Commerce & Marketplaces</h3>
-              <p>Composable journeys, consistent inventory, and responsive ops.</p>
-            </article>
-            <article class="card reveal">
-              <h3>Marketing & Data Platforms</h3>
-              <p>Signal-rich ingestion, clean contracts, and real-time decisions.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="services" id="services">
-          <div class="section-head">
-            <p class="eyebrow">Services</p>
-            <h2>Advisory, build, evolution.</h2>
-            <p class="section-lead">
-              We join as a focused partner: senior architecture leadership,
-              surgical delivery, and pragmatic modernization.
-            </p>
-          </div>
-          <div class="service-grid">
-            <article class="card reveal">
-              <h3>Architecture Partner</h3>
-              <p>Strategy, reviews, and decision support for leadership teams.</p>
-            </article>
-            <article class="card reveal">
-              <h3>Targeted Builds</h3>
-              <p>Hands-on delivery of the flows and controls that matter most.</p>
-            </article>
-            <article class="card reveal">
-              <h3>Scaling & Performance</h3>
-              <p>Profiling, redesign, and coaching to stay ahead of load.</p>
-            </article>
-            <article class="card reveal">
-              <h3>Modernization</h3>
-              <p>Incremental refreshes that improve the core without pause.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="approach" id="approach">
-          <div class="section-head">
-            <p class="eyebrow">Approach</p>
-            <h2>Principles we bring into every engagement.</h2>
-          </div>
-          <div class="approach-grid">
-            <article class="card reveal">
-              <h3>Clarity over noise</h3>
-              <p>Make the core easy to reason about; let everything else follow.</p>
-            </article>
-            <article class="card reveal">
-              <h3>Pragmatic technology</h3>
-              <p>Adopt patterns your team will confidently own next quarter.</p>
-            </article>
-            <article class="card reveal">
-              <h3>Hands-on leadership</h3>
-              <p>Access the people who build, not layers of account management.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="engagement" id="engagement">
-          <div class="section-head">
-            <p class="eyebrow">Engagement model</p>
-            <h2>Fast alignment, focused delivery.</h2>
-          </div>
-          <div class="timeline">
-            <div class="timeline-step reveal">
-              <span class="step-label">01</span>
-              <h3>Discovery</h3>
-              <p>Map the workflow, risk points, and latency constraints.</p>
-            </div>
-            <div class="timeline-step reveal">
-              <span class="step-label">02</span>
-              <h3>Architecture plan</h3>
-              <p>Define target state, trade-offs, and execution sequence.</p>
-            </div>
-            <div class="timeline-step reveal">
-              <span class="step-label">03</span>
-              <h3>Delivery + enablement</h3>
-              <p>Build, coach, and leave the team stronger than we found it.</p>
-            </div>
-          </div>
-        </section>
-
-        <section class="cta-panel" id="contact">
-          <div class="cta-content">
-            <p class="eyebrow">Contact Dataprime</p>
-            <h2>From matching engines to marketplaces — done properly.</h2>
+            <h2>Built for teams where delay, drift, or ambiguity is expensive.</h2>
             <p>
-              Dataprime Ltd · London, UK · dataprime.dev
-              <br />High-throughput systems architecture & packaged digital solutions.
+              We work with leaders running continuous transaction flows and data-intensive
+              decision engines that need both precision and speed at scale.
             </p>
-            <div class="cta-actions">
-              <a class="btn primary" href="mailto:contact@dataprime.dev"
-                >Contact us</a
-              >
-              <a class="btn outline" href="mailto:review@dataprime.dev"
-                >Request an architecture review</a
-              >
+          </div>
+
+          <div class="domain-grid">
+            <article class="domain-card reveal" data-delay="20">
+              <p class="card-tag">Markets</p>
+              <h3>Trading &amp; Exchange Infrastructure</h3>
+              <p>
+                Matching flows, risk checks, and venue integrations tuned for predictable
+                behavior under load.
+              </p>
+            </article>
+            <article class="domain-card reveal" data-delay="80">
+              <p class="card-tag">Commerce</p>
+              <h3>Marketplaces &amp; Order Systems</h3>
+              <p>
+                Inventory, fulfillment, and pricing pipelines designed for consistency across
+                channels and spikes.
+              </p>
+            </article>
+            <article class="domain-card reveal" data-delay="140">
+              <p class="card-tag">Data Platforms</p>
+              <h3>Signal Ingestion &amp; Decisioning</h3>
+              <p>
+                Event contracts, processing layers, and model-serving paths that keep outputs
+                trustworthy in real time.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section services" id="services">
+          <div class="section-head reveal">
+            <p class="eyebrow">Services</p>
+            <h2>Advisory depth plus hands-on build execution.</h2>
+            <p>
+              We do not hand over slide decks and disappear. We stay inside the engineering
+              reality until the hard parts are stable.
+            </p>
+          </div>
+
+          <div class="service-layout">
+            <article class="service-card feature reveal">
+              <p class="card-tag">Core engagement</p>
+              <h3>Embedded Architecture Partner</h3>
+              <p>
+                Senior-level decision support and implementation leadership for your
+                highest-impact system paths.
+              </p>
+              <ul class="check-list">
+                <li>Risk and latency map of your critical flows</li>
+                <li>Architecture decision records your team can sustain</li>
+                <li>Execution coaching for delivery and platform leads</li>
+              </ul>
+            </article>
+
+            <div class="service-stack">
+              <article class="service-card reveal" data-delay="40">
+                <p class="card-tag">Build</p>
+                <h3>Targeted Systems Delivery</h3>
+                <p>
+                  We ship the control planes, orchestration points, and data contracts that
+                  remove repeated operational friction.
+                </p>
+              </article>
+              <article class="service-card reveal" data-delay="90">
+                <p class="card-tag">Scale</p>
+                <h3>Performance &amp; Reliability Modernization</h3>
+                <p>
+                  Profiling-led refactors and observability redesign for teams that have
+                  outgrown their first platform architecture.
+                </p>
+              </article>
+              <article class="service-card reveal" data-delay="140">
+                <p class="card-tag">Enablement</p>
+                <h3>Operating Cadence &amp; Team Uplift</h3>
+                <p>
+                  We install repeatable rituals that keep architecture quality high across
+                  future releases.
+                </p>
+              </article>
             </div>
           </div>
+        </section>
+
+        <section class="section outcomes" id="outcomes">
+          <div class="section-head reveal">
+            <p class="eyebrow">Outcomes</p>
+            <h2>What stronger architecture unlocks in practice.</h2>
+          </div>
+
+          <div class="outcome-grid">
+            <article class="outcome-card reveal" data-delay="0">
+              <p class="outcome-eyebrow">Execution</p>
+              <h3>Release velocity rises without integrity tradeoffs.</h3>
+              <p>
+                Teams gain clearer boundaries and fewer emergency rollbacks because quality
+                controls move earlier into the flow.
+              </p>
+            </article>
+            <article class="outcome-card reveal" data-delay="70">
+              <p class="outcome-eyebrow">Operations</p>
+              <h3>Incidents become shorter and easier to reason about.</h3>
+              <p>
+                Observability aligns to business-critical pathways, so on-call response is
+                guided by real system behavior rather than guesswork.
+              </p>
+            </article>
+            <article class="outcome-card reveal" data-delay="140">
+              <p class="outcome-eyebrow">Leadership</p>
+              <h3>Architecture decisions become clear, explicit, and durable.</h3>
+              <p>
+                Product and engineering leadership get confidence in tradeoffs with records,
+                traceability, and measurable performance baselines.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section approach" id="approach">
+          <div class="section-head reveal">
+            <p class="eyebrow">Approach</p>
+            <h2>Fast alignment. Structured execution. Lasting capability.</h2>
+          </div>
+
+          <div class="approach-grid">
+            <article class="approach-step reveal" data-delay="0">
+              <span>01</span>
+              <h3>Decode the system</h3>
+              <p>
+                We map your critical pathways, ownership boundaries, and hidden coupling in
+                days, not months.
+              </p>
+            </article>
+            <article class="approach-step reveal" data-delay="80">
+              <span>02</span>
+              <h3>Prioritize the leverage points</h3>
+              <p>
+                We isolate high-value architecture moves that reduce risk while raising
+                delivery speed.
+              </p>
+            </article>
+            <article class="approach-step reveal" data-delay="160">
+              <span>03</span>
+              <h3>Build and transfer capability</h3>
+              <p>
+                We deliver with your team, codify patterns, and leave operations stronger than
+                they started.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section contact" id="contact">
+          <div class="contact-copy reveal">
+            <p class="eyebrow">Start the engagement</p>
+            <h2>Bring us the hardest system path in your platform.</h2>
+            <p>
+              Share your context, constraints, and what must stay fast and correct. We will
+              respond with a practical next-step recommendation.
+            </p>
+            <div class="contact-points">
+              <p><strong>Dataprime Ltd</strong> London, UK</p>
+              <p><strong>Email</strong> contact@dataprime.dev</p>
+              <p><strong>Focus</strong> Architecture, performance, delivery systems</p>
+            </div>
+          </div>
+
           <form
-            class="contact-card"
+            class="contact-form reveal"
+            data-delay="120"
             action="https://formspree.io/f/xldvpvzz"
             method="POST"
             autocomplete="on"
           >
             <input type="hidden" name="_subject" value="New Dataprime inquiry" />
-            <input
-              type="hidden"
-              name="_next"
-              value="https://dataprime.dev/?submitted=true"
-            />
+            <input type="hidden" name="_next" value="https://dataprime.dev/?submitted=true" />
+
             <label>
               <span>Name</span>
               <input type="text" name="name" placeholder="Alex, CTO" required />
@@ -275,30 +358,32 @@
             </label>
             <label>
               <span>Company / Team</span>
-              <input
-                type="text"
-                name="company"
-                placeholder="Growth Exchange"
-                required
-              />
+              <input type="text" name="company" placeholder="Growth Exchange" required />
             </label>
             <label>
-              <span>What needs to stay fast & correct?</span>
+              <span>What needs to stay fast and correct?</span>
               <textarea
                 name="message"
-                rows="4"
-                placeholder="Describe the platform, latency targets, pain points..."
+                rows="5"
+                placeholder="Describe your platform, latency targets, operational pain points, and what outcome matters most."
                 required
               ></textarea>
             </label>
-            <button type="submit" class="btn primary">Send brief</button>
+
+            <button type="submit" class="btn btn-solid">Send brief</button>
+            <p class="form-note">
+              Prefer direct email? Write to
+              <a href="mailto:review@dataprime.dev">review@dataprime.dev</a>
+            </p>
           </form>
         </section>
       </main>
 
       <footer class="site-footer">
-        <p>© <span id="year"></span> Dataprime Ltd · London · dataprime.dev</p>
-        <p>Capital-markets grade architecture, applied to your domain.</p>
+        <p>
+          &copy; <span id="year"></span> Dataprime Ltd.
+          <span>Capital-markets-grade architecture for modern product systems.</span>
+        </p>
       </footer>
     </div>
 
