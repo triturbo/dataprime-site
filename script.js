@@ -108,6 +108,7 @@ const updateProgress = () => {
   const scrollable = doc.scrollHeight - window.innerHeight;
   const value = scrollable <= 0 ? 0 : Math.min(window.scrollY / scrollable, 1);
   progressBar.style.transform = `scaleX(${value})`;
+  siteHeader?.classList.toggle("is-scrolled", window.scrollY > 18);
 };
 
 updateProgress();
@@ -130,10 +131,10 @@ const shouldAnimateCanvas =
 
 if (shouldAnimateCanvas) {
   const ctx = ambientCanvas.getContext("2d", { alpha: true, desynchronized: true });
-  const palette = ["15,140,255", "255,107,44", "0,184,159"];
-  const nodeCount = 62;
+  const palette = ["76,165,255", "38,211,178", "143,134,255"];
+  const nodeCount = 56;
   const points = Array.from({ length: nodeCount }, () => {
-    const speed = 0.18 + Math.random() * 0.28;
+    const speed = 0.14 + Math.random() * 0.24;
     return {
       x: Math.random(),
       y: Math.random(),
