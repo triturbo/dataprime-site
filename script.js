@@ -11,6 +11,17 @@ const lowPowerMode =
   connection?.saveData ||
   (navigator.deviceMemory && navigator.deviceMemory <= 4) ||
   (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4);
+const canViewTransition =
+  typeof document.startViewTransition === "function" && !prefersReducedMotion && !lowPowerMode;
+
+const runViewTransition = (updateFn) => {
+  if (!canViewTransition) {
+    updateFn();
+    return;
+  }
+
+  document.startViewTransition(updateFn);
+};
 
 document.body.classList.toggle("low-power", Boolean(lowPowerMode));
 
@@ -28,7 +39,7 @@ const openMenu = () => {
 
 const smoothScrollTo = (selector) => {
   const target = document.querySelector(selector);
-  if (!target) return;
+  if (!target) return null;
 
   const headerPosition = siteHeader ? window.getComputedStyle(siteHeader).position : "";
   const useHeaderOffset = headerPosition === "sticky" || headerPosition === "fixed";
@@ -37,23 +48,39 @@ const smoothScrollTo = (selector) => {
   const behavior = prefersReducedMotion || lowPowerMode ? "auto" : "smooth";
 
   window.scrollTo({ top: Math.max(top, 0), behavior });
+  return target;
+};
+
+const highlightTarget = (target) => {
+  if (!target) return;
+  const highlightedNode =
+    target.querySelector(".section-head, .hero-copy, .contact-copy, .hero-stage") || target;
+  highlightedNode.classList.remove("target-glow");
+  void highlightedNode.offsetWidth;
+  highlightedNode.classList.add("target-glow");
+  window.setTimeout(() => highlightedNode.classList.remove("target-glow"), 950);
 };
 
 scrollLinks.forEach((link) => {
   link.addEventListener("click", (event) => {
     event.preventDefault();
-    smoothScrollTo(link.dataset.scrollTo);
+    const target = smoothScrollTo(link.dataset.scrollTo);
+    runViewTransition(() => {
+      highlightTarget(target);
+    });
     closeMenu();
   });
 });
 
 navToggle?.addEventListener("click", () => {
   const isOpen = navMenu?.classList.contains("open");
-  if (isOpen) {
-    closeMenu();
-  } else {
-    openMenu();
-  }
+  runViewTransition(() => {
+    if (isOpen) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
 });
 
 document.addEventListener("keydown", (event) => {
@@ -101,6 +128,28 @@ contactForm?.addEventListener("submit", () => {
   submitButton.textContent = "Sending...";
 });
 
+const finePointer = window.matchMedia("(pointer:fine)").matches;
+const spotlightNodes = document.querySelectorAll(
+  ".domain-card, .service-card, .outcome-card, .approach-step, .contact-copy, .contact-form, .hero-proof article"
+);
+
+if (finePointer && !prefersReducedMotion && !lowPowerMode) {
+  spotlightNodes.forEach((node) => {
+    node.addEventListener("pointermove", (event) => {
+      const rect = node.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width) * 100;
+      const y = ((event.clientY - rect.top) / rect.height) * 100;
+      node.style.setProperty("--pointer-x", `${x}%`);
+      node.style.setProperty("--pointer-y", `${y}%`);
+    });
+
+    node.addEventListener("pointerleave", () => {
+      node.style.removeProperty("--pointer-x");
+      node.style.removeProperty("--pointer-y");
+    });
+  });
+}
+
 let progressTicking = false;
 const updateProgress = () => {
   if (!progressBar) return;
@@ -128,6 +177,24 @@ window.addEventListener(
 const ambientCanvas = document.getElementById("ambientCanvas");
 const shouldAnimateCanvas =
   ambientCanvas && window.innerWidth > 860 && !prefersReducedMotion && !lowPowerMode;
+
+const heroStage = document.querySelector(".hero-stage");
+if (heroStage && finePointer && !prefersReducedMotion && !lowPowerMode) {
+  heroStage.addEventListener("pointermove", (event) => {
+    const rect = heroStage.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width) * 100;
+    const y = ((event.clientY - rect.top) / rect.height) * 100;
+    const rotateX = ((50 - y) / 50) * 3.8;
+    const rotateY = ((x - 50) / 50) * 3.8;
+    heroStage.style.setProperty("--stage-rx", `${rotateX}deg`);
+    heroStage.style.setProperty("--stage-ry", `${rotateY}deg`);
+  });
+
+  heroStage.addEventListener("pointerleave", () => {
+    heroStage.style.removeProperty("--stage-rx");
+    heroStage.style.removeProperty("--stage-ry");
+  });
+}
 
 if (shouldAnimateCanvas) {
   const ctx = ambientCanvas.getContext("2d", { alpha: true, desynchronized: true });
