@@ -1,10 +1,12 @@
 const scrollLinks = document.querySelectorAll("[data-scroll-to]");
 const navToggle = document.querySelector(".nav-toggle");
 const navMenu = document.querySelector(".site-nav");
+const navAnchors = Array.from(document.querySelectorAll(".site-nav a"));
 const siteHeader = document.querySelector(".site-header");
 const progressBar = document.querySelector(".scroll-progress span");
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const finePointer = window.matchMedia("(pointer:fine)").matches;
 const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
 const lowPowerMode =
   prefersReducedMotion ||
@@ -37,17 +39,20 @@ const openMenu = () => {
   navToggle?.setAttribute("aria-expanded", "true");
 };
 
+const getHeaderOffset = () => {
+  if (!siteHeader) return 12;
+  const headerPosition = window.getComputedStyle(siteHeader).position;
+  const shouldOffset = headerPosition === "sticky" || headerPosition === "fixed";
+  return shouldOffset ? siteHeader.offsetHeight + 18 : 12;
+};
+
 const smoothScrollTo = (selector) => {
   const target = document.querySelector(selector);
   if (!target) return null;
 
-  const headerPosition = siteHeader ? window.getComputedStyle(siteHeader).position : "";
-  const useHeaderOffset = headerPosition === "sticky" || headerPosition === "fixed";
-  const headerOffset = useHeaderOffset && siteHeader ? siteHeader.offsetHeight + 14 : 10;
-  const top = target.getBoundingClientRect().top + window.scrollY - headerOffset;
+  const top = target.getBoundingClientRect().top + window.scrollY - getHeaderOffset();
   const behavior = prefersReducedMotion || lowPowerMode ? "auto" : "smooth";
-
-  window.scrollTo({ top: Math.max(top, 0), behavior });
+  window.scrollTo({ top: Math.max(0, top), behavior });
   return target;
 };
 
@@ -58,16 +63,14 @@ const highlightTarget = (target) => {
   highlightedNode.classList.remove("target-glow");
   void highlightedNode.offsetWidth;
   highlightedNode.classList.add("target-glow");
-  window.setTimeout(() => highlightedNode.classList.remove("target-glow"), 950);
+  window.setTimeout(() => highlightedNode.classList.remove("target-glow"), 900);
 };
 
 scrollLinks.forEach((link) => {
   link.addEventListener("click", (event) => {
     event.preventDefault();
     const target = smoothScrollTo(link.dataset.scrollTo);
-    runViewTransition(() => {
-      highlightTarget(target);
-    });
+    runViewTransition(() => highlightTarget(target));
     closeMenu();
   });
 });
@@ -114,23 +117,36 @@ if (!("IntersectionObserver" in window) || prefersReducedMotion) {
         observer.unobserve(entry.target);
       });
     },
-    { threshold: 0.18, rootMargin: "0px 0px -5% 0px" }
+    { threshold: 0.16, rootMargin: "0px 0px -7% 0px" }
   );
 
   revealNodes.forEach((node) => revealObserver.observe(node));
 }
 
-const contactForm = document.querySelector(".contact-form");
-contactForm?.addEventListener("submit", () => {
-  const submitButton = contactForm.querySelector("button[type='submit']");
-  if (!submitButton) return;
-  submitButton.disabled = true;
-  submitButton.textContent = "Sending...";
-});
+const sectionAnchors = ["#hero", "#domains", "#services", "#outcomes", "#approach", "#contact"]
+  .map((selector) => document.querySelector(selector))
+  .filter(Boolean);
 
-const finePointer = window.matchMedia("(pointer:fine)").matches;
+const setActiveNav = () => {
+  if (!navAnchors.length || !sectionAnchors.length) return;
+
+  const offset = getHeaderOffset() + window.innerHeight * 0.22;
+  let currentId = sectionAnchors[0].id;
+
+  sectionAnchors.forEach((section) => {
+    if (window.scrollY + offset >= section.offsetTop) {
+      currentId = section.id;
+    }
+  });
+
+  navAnchors.forEach((anchor) => {
+    const isActive = anchor.getAttribute("href") === `#${currentId}`;
+    anchor.classList.toggle("is-active", isActive);
+  });
+};
+
 const spotlightNodes = document.querySelectorAll(
-  ".domain-card, .service-card, .outcome-card, .approach-step, .contact-copy, .contact-form, .hero-proof article"
+  ".hero-note, .hero-stage, .stage-card, .domain-panel, .services-intro, .service-card, .outcome-panel, .approach-card, .contact-copy, .contact-form"
 );
 
 if (finePointer && !prefersReducedMotion && !lowPowerMode) {
@@ -150,42 +166,14 @@ if (finePointer && !prefersReducedMotion && !lowPowerMode) {
   });
 }
 
-let progressTicking = false;
-const updateProgress = () => {
-  if (!progressBar) return;
-  const doc = document.documentElement;
-  const scrollable = doc.scrollHeight - window.innerHeight;
-  const value = scrollable <= 0 ? 0 : Math.min(window.scrollY / scrollable, 1);
-  progressBar.style.transform = `scaleX(${value})`;
-  siteHeader?.classList.toggle("is-scrolled", window.scrollY > 18);
-};
-
-updateProgress();
-window.addEventListener(
-  "scroll",
-  () => {
-    if (progressTicking) return;
-    progressTicking = true;
-    window.requestAnimationFrame(() => {
-      updateProgress();
-      progressTicking = false;
-    });
-  },
-  { passive: true }
-);
-
-const ambientCanvas = document.getElementById("ambientCanvas");
-const shouldAnimateCanvas =
-  ambientCanvas && window.innerWidth > 860 && !prefersReducedMotion && !lowPowerMode;
-
 const heroStage = document.querySelector(".hero-stage");
 if (heroStage && finePointer && !prefersReducedMotion && !lowPowerMode) {
   heroStage.addEventListener("pointermove", (event) => {
     const rect = heroStage.getBoundingClientRect();
     const x = ((event.clientX - rect.left) / rect.width) * 100;
     const y = ((event.clientY - rect.top) / rect.height) * 100;
-    const rotateX = ((50 - y) / 50) * 3.8;
-    const rotateY = ((x - 50) / 50) * 3.8;
+    const rotateX = ((50 - y) / 50) * 3.6;
+    const rotateY = ((x - 50) / 50) * 3.6;
     heroStage.style.setProperty("--stage-rx", `${rotateX}deg`);
     heroStage.style.setProperty("--stage-ry", `${rotateY}deg`);
   });
@@ -196,27 +184,74 @@ if (heroStage && finePointer && !prefersReducedMotion && !lowPowerMode) {
   });
 }
 
+const contactForm = document.querySelector(".contact-form");
+contactForm?.addEventListener("submit", () => {
+  const submitButton = contactForm.querySelector("button[type='submit']");
+  if (!submitButton) return;
+  submitButton.disabled = true;
+  submitButton.textContent = "Sending...";
+});
+
+let progressTicking = false;
+const updateFrame = () => {
+  const doc = document.documentElement;
+  const scrollable = doc.scrollHeight - window.innerHeight;
+  const value = scrollable <= 0 ? 0 : Math.min(window.scrollY / scrollable, 1);
+  if (progressBar) {
+    progressBar.style.transform = `scaleX(${value})`;
+  }
+  siteHeader?.classList.toggle("is-scrolled", window.scrollY > 16);
+  setActiveNav();
+};
+
+updateFrame();
+window.addEventListener(
+  "scroll",
+  () => {
+    if (progressTicking) return;
+    progressTicking = true;
+    window.requestAnimationFrame(() => {
+      updateFrame();
+      progressTicking = false;
+    });
+  },
+  { passive: true }
+);
+
+window.addEventListener(
+  "resize",
+  () => {
+    updateFrame();
+    if (window.innerWidth > 860) closeMenu();
+  },
+  { passive: true }
+);
+
+const ambientCanvas = document.getElementById("ambientCanvas");
+const shouldAnimateCanvas =
+  ambientCanvas && window.innerWidth > 900 && !prefersReducedMotion && !lowPowerMode;
+
 if (shouldAnimateCanvas) {
   const ctx = ambientCanvas.getContext("2d", { alpha: true, desynchronized: true });
-  const palette = ["76,165,255", "38,211,178", "143,134,255"];
-  const nodeCount = 56;
-  const points = Array.from({ length: nodeCount }, () => {
-    const speed = 0.14 + Math.random() * 0.24;
+  const palette = ["114,227,255", "77,176,255", "156,143,255", "255,211,111"];
+  const points = Array.from({ length: 64 }, () => {
+    const speed = 0.14 + Math.random() * 0.26;
     return {
       x: Math.random(),
       y: Math.random(),
       vx: (Math.random() > 0.5 ? 1 : -1) * speed,
       vy: (Math.random() > 0.5 ? 1 : -1) * speed,
-      size: 1.2 + Math.random() * 2.3,
+      size: 1.2 + Math.random() * 2.4,
       color: palette[Math.floor(Math.random() * palette.length)],
     };
   });
 
   let width = window.innerWidth;
   let height = window.innerHeight;
+  let frameId;
 
   const resize = () => {
-    const ratio = Math.min(window.devicePixelRatio || 1, 1.4);
+    const ratio = Math.min(window.devicePixelRatio || 1, 1.5);
     width = window.innerWidth;
     height = window.innerHeight;
     ambientCanvas.width = Math.floor(width * ratio);
@@ -226,9 +261,7 @@ if (shouldAnimateCanvas) {
 
   resize();
 
-  let frameId;
-  const connectionDistance = 140;
-
+  const connectionDistance = 150;
   const draw = () => {
     ctx.clearRect(0, 0, width, height);
 
@@ -244,7 +277,7 @@ if (shouldAnimateCanvas) {
       const y = point.y * height;
 
       ctx.beginPath();
-      ctx.fillStyle = `rgba(${point.color}, 0.45)`;
+      ctx.fillStyle = `rgba(${point.color}, 0.48)`;
       ctx.arc(x, y, point.size, 0, Math.PI * 2);
       ctx.fill();
 
@@ -258,10 +291,10 @@ if (shouldAnimateCanvas) {
 
         if (distance > connectionDistance) continue;
 
-        const opacity = (1 - distance / connectionDistance) * 0.22;
+        const opacity = (1 - distance / connectionDistance) * 0.18;
         const gradient = ctx.createLinearGradient(x, y, ox, oy);
         gradient.addColorStop(0, `rgba(${point.color}, ${opacity})`);
-        gradient.addColorStop(1, `rgba(${other.color}, ${opacity * 0.85})`);
+        gradient.addColorStop(1, `rgba(${other.color}, ${opacity * 0.9})`);
 
         ctx.strokeStyle = gradient;
         ctx.lineWidth = 1;
@@ -289,7 +322,7 @@ if (shouldAnimateCanvas) {
     "resize",
     () => {
       clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(resize, 180);
+      resizeTimer = window.setTimeout(resize, 180);
     },
     { passive: true }
   );

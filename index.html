@@ -12,12 +12,12 @@
       name="description"
       content="Dataprime designs and delivers high-throughput systems for markets, commerce, and data-heavy products where correctness and speed are non-negotiable."
     />
-    <meta name="theme-color" content="#071126" />
+    <meta name="theme-color" content="#050816" />
     <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Sora:wght@400;500;600;700;800&amp;display=swap"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css" />
@@ -29,11 +29,11 @@
 
     <div class="page-shell">
       <header class="site-header">
-        <a href="#hero" class="brand" data-scroll-to="#hero">
+        <a href="#hero" class="brand" data-scroll-to="#hero" aria-label="Dataprime home">
           <img class="brand-logo" src="./assets/dataprime-logo.svg" alt="Dataprime" />
           <div class="brand-text">
             <span class="brand-name">Dataprime</span>
-            <span class="brand-tag">High-Throughput Systems</span>
+            <span class="brand-tag">Systems that hold under pressure</span>
           </div>
         </a>
 
@@ -55,349 +55,422 @@
         </nav>
 
         <a class="btn btn-solid header-cta" href="#contact" data-scroll-to="#contact"
-          >Book a call</a
+          >Book a review</a
         >
       </header>
 
       <main>
         <section class="hero section" id="hero">
           <div class="hero-copy">
-            <p class="eyebrow reveal">Dataprime Ltd</p>
-            <h1 class="reveal" data-delay="80">
-              Build systems that stay fast
-              <span class="ink-gradient">when the stakes go up.</span>
-            </h1>
-            <p class="lead reveal" data-delay="140">
-              We bring capital-markets discipline into product engineering, so your team can
-              ship faster while latency, reliability, and auditability remain under control.
+            <p class="eyebrow reveal">Dataprime Ltd / London / Enterprise Architecture</p>
+            <div class="hero-heading reveal" data-delay="40">
+              <p class="hero-kicker">Revenue-critical systems. Clearer decisions. Less drag.</p>
+              <h1>
+                Engineer the
+                <span class="line-break">control layer behind</span>
+                <span class="ink-gradient">high-stakes platforms.</span>
+              </h1>
+            </div>
+            <p class="lead reveal" data-delay="110">
+              Dataprime partners with teams running fast transaction paths, operationally noisy
+              platforms, and data-heavy products that need correctness to scale with speed.
             </p>
 
-            <div class="hero-actions reveal" data-delay="200">
+            <div class="hero-actions reveal" data-delay="170">
               <a class="btn btn-solid" href="#contact" data-scroll-to="#contact"
                 >Request architecture review</a
               >
               <a class="btn btn-ghost" href="#services" data-scroll-to="#services"
-                >Explore services</a
+                >See engagement model</a
               >
             </div>
 
-            <ul class="hero-tags reveal" data-delay="240" aria-label="Capabilities">
-              <li>Low-latency architecture</li>
-              <li>Production modernization</li>
-              <li>Risk-aware delivery</li>
-            </ul>
+            <div class="hero-ribbon reveal" data-delay="240" aria-label="Core operating themes">
+              <span>Latency-sensitive architecture</span>
+              <span>Risk-aware delivery</span>
+              <span>Modernization without drift</span>
+            </div>
 
-            <div class="hero-proof reveal" data-delay="280" aria-label="Program strengths">
-              <article>
-                <h3>Operating Clarity</h3>
-                <p>Architecture choices become explicit, traceable, and reviewable.</p>
+            <div class="hero-grid reveal" data-delay="300" aria-label="Engagement highlights">
+              <article class="hero-note hero-note-large">
+                <p class="card-tag">Why teams bring us in</p>
+                <h3>Too much complexity is hiding in the system edges.</h3>
+                <p>
+                  When releases depend on tribal knowledge, every incident is slower and every
+                  architecture choice gets more expensive.
+                </p>
               </article>
-              <article>
-                <h3>Execution Confidence</h3>
-                <p>Delivery speed rises without sacrificing correctness in critical flows.</p>
+              <article class="hero-note">
+                <p class="card-tag">What changes</p>
+                <p>Boundaries sharpen. System behavior becomes legible. Ownership improves.</p>
               </article>
-              <article>
-                <h3>Platform Maturity</h3>
-                <p>Systems stay dependable as complexity and volume increase.</p>
+              <article class="hero-note">
+                <p class="card-tag">How we work</p>
+                <p>Hands-on design and implementation support for the paths that matter most.</p>
               </article>
             </div>
           </div>
 
-          <aside class="hero-stage reveal" data-delay="220" aria-label="Live system snapshot">
-            <div class="stage-head">
-              <div>
-                <p class="stage-eyebrow">Live Program Cockpit</p>
-                <h2>Cyber agents coordinating code and digital ops in real time.</h2>
-              </div>
-              <span class="stage-pill">Cyber ops live</span>
+          <aside class="hero-stage reveal" data-delay="180" aria-label="Live delivery command board">
+            <div class="stage-chrome">
+              <span></span><span></span><span></span>
+              <p>Dataprime Command Board</p>
             </div>
 
-            <div class="cyber-scene" aria-label="Animated cyber agent operations">
-              <div class="cyber-grid" aria-hidden="true"></div>
-              <div class="code-rain" aria-hidden="true">
-                <span>git push origin codex/latency-router-hardening</span>
-                <span>agent://vega compile orchestration graph --safe-mode</span>
-                <span>diff --stream /core/trade-paths/recovery.ts</span>
-                <span>event bus sync: contracts/states/order.fill.v3</span>
-                <span>ops.scan validating release gates and rollback mesh</span>
-              </div>
-              <svg class="agent-links" viewBox="0 0 520 300" preserveAspectRatio="none" aria-hidden="true">
-                <path d="M80 64 L252 110 L426 68" />
-                <path d="M80 64 L172 232 L346 232 L426 68" />
-                <path d="M252 110 L252 254" />
-              </svg>
-              <div class="agent-network">
-                <div class="agent-node node-a">
-                  <p class="agent-name">Agent Vega</p>
-                  <p class="agent-task">refactoring failover orchestration</p>
+            <div class="stage-layout">
+              <article class="stage-card stage-card-primary">
+                <div class="stage-card-head">
+                  <p class="card-tag">Program cockpit</p>
+                  <span class="status-pill">Live</span>
                 </div>
-                <div class="agent-node node-b">
-                  <p class="agent-name">Agent Nyx</p>
-                  <p class="agent-task">hardening event contracts</p>
+                <h2>Code, dependencies, and operating risk in one view.</h2>
+                <div class="signal-graph" aria-hidden="true">
+                  <span class="signal-line signal-line-a"></span>
+                  <span class="signal-line signal-line-b"></span>
+                  <span class="signal-line signal-line-c"></span>
+                  <div class="signal-node node-a"></div>
+                  <div class="signal-node node-b"></div>
+                  <div class="signal-node node-c"></div>
+                  <div class="signal-node node-d"></div>
                 </div>
-                <div class="agent-node node-c">
-                  <p class="agent-name">Agent Orion</p>
-                  <p class="agent-task">auditing runtime guardrails</p>
+                <div class="protocol-list">
+                  <div>
+                    <span>Control path</span>
+                    <strong>Order ingress -> guardrails -> orchestration</strong>
+                  </div>
+                  <div>
+                    <span>Current focus</span>
+                    <strong>Retry logic, observability, state drift</strong>
+                  </div>
                 </div>
-                <div class="agent-node node-d">
-                  <p class="agent-name">Agent Sol</p>
-                  <p class="agent-task">streaming telemetry patches</p>
-                </div>
-              </div>
-            </div>
+              </article>
 
-            <div class="stage-feed" aria-label="Recent delivery highlights">
-              <article>
-                <span class="pulse-dot"></span>
-                <p>Agent swarm merged deterministic retry paths for critical transaction edges.</p>
+              <article class="stage-card stage-card-code">
+                <div class="stage-card-head">
+                  <p class="card-tag">Live code stream</p>
+                  <span class="badge-soft">agents active</span>
+                </div>
+                <div class="code-stack" aria-hidden="true">
+                  <span>git diff services/fill-router.ts</span>
+                  <span>agent.vega patch deterministic recovery paths</span>
+                  <span>contracts.verify order.fill.v3 --strict</span>
+                  <span>mesh.observe trace cluster latency-surface</span>
+                  <span>release gates: ownership + rollback + audit</span>
+                </div>
               </article>
-              <article>
-                <span class="pulse-dot"></span>
-                <p>Code graph now auto-detects schema drift before release artifacts are promoted.</p>
+
+              <article class="stage-card stage-card-orbit">
+                <div class="stage-card-head">
+                  <p class="card-tag">Execution model</p>
+                  <span class="badge-soft">multi-track</span>
+                </div>
+                <div class="orbit-shell" aria-hidden="true">
+                  <div class="orbit-ring orbit-ring-a"></div>
+                  <div class="orbit-ring orbit-ring-b"></div>
+                  <div class="orbit-core"></div>
+                  <div class="orbit-point orbit-point-a"></div>
+                  <div class="orbit-point orbit-point-b"></div>
+                  <div class="orbit-point orbit-point-c"></div>
+                </div>
+                <ul class="orbit-legend">
+                  <li>Architecture decisions</li>
+                  <li>Delivery unblockers</li>
+                  <li>Operational guardrails</li>
+                </ul>
               </article>
-              <article>
-                <span class="pulse-dot"></span>
-                <p>Live observability mesh aligns incidents to service ownership in a single trace.</p>
+
+              <article class="stage-card stage-card-feed">
+                <div class="stage-card-head">
+                  <p class="card-tag">Recent shifts</p>
+                  <span class="badge-soft">qualitative</span>
+                </div>
+                <div class="feed-list">
+                  <article>
+                    <span class="pulse-dot"></span>
+                    <p>Removed hidden coupling across a latency-sensitive transaction path.</p>
+                  </article>
+                  <article>
+                    <span class="pulse-dot"></span>
+                    <p>Reframed incident triage around service ownership and real failure modes.</p>
+                  </article>
+                  <article>
+                    <span class="pulse-dot"></span>
+                    <p>Made architecture tradeoffs visible enough for leadership to act on them.</p>
+                  </article>
+                </div>
               </article>
             </div>
           </aside>
         </section>
 
-        <section class="signal-loop" aria-label="Operational outcomes">
-          <div class="loop-track">
-            <span>Deterministic throughput</span>
-            <span>Traceable decisions</span>
-            <span>Faster incident recovery</span>
-            <span>Clear ownership boundaries</span>
-            <span>Lower regression risk</span>
-            <span>Deterministic throughput</span>
-            <span>Traceable decisions</span>
-            <span>Faster incident recovery</span>
-            <span>Clear ownership boundaries</span>
-            <span>Lower regression risk</span>
+        <section class="trust-band" aria-label="Core strengths">
+          <div class="trust-band-copy reveal">
+            <p class="eyebrow">What the engagement is built around</p>
+            <h2>Structure the hard parts first. Then make delivery safer and faster.</h2>
+          </div>
+          <div class="trust-band-track" aria-hidden="true">
+            <span>Architecture clarity</span>
+            <span>Operational calm</span>
+            <span>Decision traceability</span>
+            <span>Less release friction</span>
+            <span>Architecture clarity</span>
+            <span>Operational calm</span>
+            <span>Decision traceability</span>
+            <span>Less release friction</span>
           </div>
         </section>
 
-        <section class="section section-shell" id="domains">
+        <section class="section domains-section" id="domains">
           <div class="section-head reveal">
             <p class="eyebrow">Domains</p>
-            <h2>Built for teams where delay, drift, or ambiguity is expensive.</h2>
+            <h2>Built for systems where ambiguity shows up as lost time, higher risk, or slower growth.</h2>
             <p>
-              We work with leaders running continuous transaction flows and data-intensive
-              decision engines that need both precision and speed at scale.
+              The work is strongest where reliability, throughput, and explainability all matter at once.
             </p>
           </div>
 
-          <div class="domain-grid">
-            <article class="domain-card reveal" data-delay="20">
+          <div class="domains-bento">
+            <article class="domain-panel domain-panel-large reveal" data-delay="0">
               <p class="card-tag">Markets</p>
-              <h3>Trading &amp; Exchange Infrastructure</h3>
+              <h3>Trading, exchange, and pricing infrastructure</h3>
               <p>
-                Matching flows, risk checks, and venue integrations tuned for predictable
-                behavior under load.
+                Matching flows, venue integrations, and risk controls designed for predictable behavior under load.
               </p>
             </article>
-            <article class="domain-card reveal" data-delay="80">
+            <article class="domain-panel reveal" data-delay="50">
               <p class="card-tag">Commerce</p>
-              <h3>Marketplaces &amp; Order Systems</h3>
+              <h3>Order, inventory, and fulfillment platforms</h3>
               <p>
-                Inventory, fulfillment, and pricing pipelines designed for consistency across
-                channels and spikes.
+                Better consistency across spikes, channels, and operational edge cases.
               </p>
             </article>
-            <article class="domain-card reveal" data-delay="140">
-              <p class="card-tag">Data Platforms</p>
-              <h3>Signal Ingestion &amp; Decisioning</h3>
+            <article class="domain-panel reveal" data-delay="100">
+              <p class="card-tag">Data</p>
+              <h3>Signal ingestion and decisioning systems</h3>
               <p>
-                Event contracts, processing layers, and model-serving paths that keep outputs
-                trustworthy in real time.
+                Event contracts and serving paths that stay explainable in real time.
+              </p>
+            </article>
+            <article class="domain-panel domain-panel-wide reveal" data-delay="150">
+              <p class="card-tag">Leadership pressure</p>
+              <h3>Useful when scale has outpaced the first architecture.</h3>
+              <p>
+                Teams know what is wrong, but not which moves will reduce risk without stalling delivery.
+              </p>
+            </article>
+            <article class="domain-panel reveal" data-delay="200">
+              <p class="card-tag">Operating style</p>
+              <h3>Advisory depth with build accountability</h3>
+              <p>
+                The engagement stays close to code, release mechanics, and real system behavior.
               </p>
             </article>
           </div>
         </section>
 
-        <section class="section section-shell services" id="services">
+        <section class="section services-section" id="services">
           <div class="section-head reveal">
             <p class="eyebrow">Services</p>
-            <h2>Advisory depth plus hands-on build execution.</h2>
+            <h2>A more editorial operating model: diagnosis on the left, execution on the right.</h2>
             <p>
-              We do not hand over slide decks and disappear. We stay inside the engineering
-              reality until the hard parts are stable.
+              The structure is deliberate. We make the system legible, isolate the leverage points, and help your team ship the changes.
             </p>
           </div>
 
-          <div class="service-layout">
-            <article class="service-card feature reveal">
-              <p class="card-tag">Core engagement</p>
-              <h3>Embedded Architecture Partner</h3>
+          <div class="services-layout">
+            <aside class="services-intro reveal">
+              <p class="services-label">Engagement model</p>
+              <h3>Not a slide deck. Not a staffing patch.</h3>
               <p>
-                Senior-level decision support and implementation leadership for your
-                highest-impact system paths.
+                Dataprime works as an architecture partner inside the pressure points that are already costing the team time.
               </p>
-              <ul class="check-list">
-                <li>Risk and latency map of your critical flows</li>
-                <li>Architecture decision records your team can sustain</li>
-                <li>Execution coaching for delivery and platform leads</li>
+              <ul class="services-notes">
+                <li>System-path mapping for the critical flows</li>
+                <li>Decision support for platform and delivery leaders</li>
+                <li>Implementation guidance where theory alone would fail</li>
               </ul>
-            </article>
+            </aside>
 
-            <div class="service-stack">
-              <article class="service-card reveal" data-delay="40">
-                <p class="card-tag">Build</p>
-                <h3>Targeted Systems Delivery</h3>
-                <p>
-                  We ship the control planes, orchestration points, and data contracts that
-                  remove repeated operational friction.
-                </p>
+            <div class="service-cards">
+              <article class="service-card reveal" data-delay="0">
+                <span>01</span>
+                <div>
+                  <p class="card-tag">Core engagement</p>
+                  <h3>Embedded architecture partner</h3>
+                  <p>
+                    Senior-level guidance and hands-on execution support across your highest-value system paths.
+                  </p>
+                </div>
               </article>
-              <article class="service-card reveal" data-delay="90">
-                <p class="card-tag">Scale</p>
-                <h3>Performance &amp; Reliability Modernization</h3>
-                <p>
-                  Profiling-led refactors and observability redesign for teams that have
-                  outgrown their first platform architecture.
-                </p>
+              <article class="service-card reveal" data-delay="60">
+                <span>02</span>
+                <div>
+                  <p class="card-tag">Build</p>
+                  <h3>Targeted systems delivery</h3>
+                  <p>
+                    Control planes, orchestration points, data contracts, and release mechanics that reduce repeated operational friction.
+                  </p>
+                </div>
               </article>
-              <article class="service-card reveal" data-delay="140">
-                <p class="card-tag">Enablement</p>
-                <h3>Operating Cadence &amp; Team Uplift</h3>
-                <p>
-                  We install repeatable rituals that keep architecture quality high across
-                  future releases.
-                </p>
+              <article class="service-card reveal" data-delay="120">
+                <span>03</span>
+                <div>
+                  <p class="card-tag">Scale</p>
+                  <h3>Performance and reliability modernization</h3>
+                  <p>
+                    Profiling-led refactors and observability redesign for platforms that have outgrown their first architecture.
+                  </p>
+                </div>
+              </article>
+              <article class="service-card reveal" data-delay="180">
+                <span>04</span>
+                <div>
+                  <p class="card-tag">Enablement</p>
+                  <h3>Operating cadence and team uplift</h3>
+                  <p>
+                    Repeatable rituals, decision records, and review habits that keep architecture quality intact after the engagement.
+                  </p>
+                </div>
               </article>
             </div>
           </div>
         </section>
 
-        <section class="section section-shell outcomes" id="outcomes">
+        <section class="section outcomes-section" id="outcomes">
           <div class="section-head reveal">
             <p class="eyebrow">Outcomes</p>
-            <h2>What stronger architecture unlocks in practice.</h2>
+            <h2>What better architecture feels like in the operating reality of the team.</h2>
           </div>
 
-          <div class="outcome-grid">
-            <article class="outcome-card reveal" data-delay="0">
-              <p class="outcome-eyebrow">Execution</p>
-              <h3>Release velocity rises without integrity tradeoffs.</h3>
+          <div class="outcomes-grid">
+            <article class="outcome-panel reveal" data-delay="0">
+              <p class="card-tag">Delivery</p>
+              <h3>Releases stop depending on hidden knowledge.</h3>
               <p>
-                Teams gain clearer boundaries and fewer emergency rollbacks because quality
-                controls move earlier into the flow.
+                Boundaries and safeguards move earlier into the flow, so teams can ship without rediscovering the same failure modes.
               </p>
+              <ul>
+                <li>Fewer risky handoffs</li>
+                <li>Less rework under deadline pressure</li>
+              </ul>
             </article>
-            <article class="outcome-card reveal" data-delay="70">
-              <p class="outcome-eyebrow">Operations</p>
-              <h3>Incidents become shorter and easier to reason about.</h3>
+            <article class="outcome-panel reveal" data-delay="70">
+              <p class="card-tag">Operations</p>
+              <h3>Incidents get shorter because the system is easier to reason about.</h3>
               <p>
-                Observability aligns to business-critical pathways, so on-call response is
-                guided by real system behavior rather than guesswork.
+                Observability shifts from generic dashboards toward the paths that affect customers, money, and core workflows.
               </p>
+              <ul>
+                <li>Faster root-cause isolation</li>
+                <li>Clearer ownership during recovery</li>
+              </ul>
             </article>
-            <article class="outcome-card reveal" data-delay="140">
-              <p class="outcome-eyebrow">Leadership</p>
-              <h3>Architecture decisions become clear, explicit, and durable.</h3>
+            <article class="outcome-panel reveal" data-delay="140">
+              <p class="card-tag">Leadership</p>
+              <h3>Architecture choices become visible enough to govern.</h3>
               <p>
-                Product and engineering leadership get confidence in tradeoffs with records,
-                traceability, and measurable performance baselines.
+                Tradeoffs stop living in private conversations and start existing in artifacts the team can use and revisit.
               </p>
+              <ul>
+                <li>Explicit decision records</li>
+                <li>More durable platform direction</li>
+              </ul>
             </article>
           </div>
         </section>
 
-        <section class="section section-shell approach" id="approach">
+        <section class="section approach-section" id="approach">
           <div class="section-head reveal">
             <p class="eyebrow">Approach</p>
-            <h2>Fast alignment. Structured execution. Lasting capability.</h2>
+            <h2>Three phases, sequenced to create momentum without turning the engagement into theater.</h2>
           </div>
 
-          <div class="approach-grid">
-            <article class="approach-step reveal" data-delay="0">
+          <div class="approach-rail">
+            <article class="approach-card reveal" data-delay="0">
               <span>01</span>
-              <h3>Decode the system</h3>
+              <h3>Expose the real system behavior</h3>
               <p>
-                We map your critical pathways, ownership boundaries, and hidden coupling in
-                days, not months.
+                We map the critical pathways, hidden coupling, and ownership gaps that are shaping delivery outcomes right now.
               </p>
             </article>
-            <article class="approach-step reveal" data-delay="80">
+            <article class="approach-card reveal" data-delay="80">
               <span>02</span>
-              <h3>Prioritize the leverage points</h3>
+              <h3>Pick the leverage points with discipline</h3>
               <p>
-                We isolate high-value architecture moves that reduce risk while raising
-                delivery speed.
+                Not every issue deserves a platform rewrite. We isolate the changes that lower risk while preserving momentum.
               </p>
             </article>
-            <article class="approach-step reveal" data-delay="160">
+            <article class="approach-card reveal" data-delay="160">
               <span>03</span>
-              <h3>Build and transfer capability</h3>
+              <h3>Build the pattern and hand it over cleanly</h3>
               <p>
-                We deliver with your team, codify patterns, and leave operations stronger than
-                they started.
+                The goal is not dependency on outside help. The goal is a stronger system and a team that can carry it forward.
               </p>
             </article>
           </div>
         </section>
 
-        <section class="section contact" id="contact">
-          <div class="contact-copy reveal">
-            <p class="eyebrow">Start the engagement</p>
-            <h2>Bring us the hardest system path in your platform.</h2>
-            <p>
-              Share your context, constraints, and what must stay fast and correct. We will
-              respond with a practical next-step recommendation.
-            </p>
-            <div class="contact-points">
-              <p><strong>Dataprime Ltd</strong> London, UK</p>
-              <p><strong>Email</strong> contact@dataprime.dev</p>
-              <p><strong>Focus</strong> Architecture, performance, delivery systems</p>
+        <section class="section contact-section" id="contact">
+          <div class="contact-layout">
+            <div class="contact-copy reveal">
+              <p class="eyebrow">Start the engagement</p>
+              <h2>Bring the hardest path in your platform, not the polished version.</h2>
+              <p>
+                Share the flow that has become slow, fragile, noisy, or politically difficult. That is usually where the leverage is.
+              </p>
+              <div class="contact-notes">
+                <p><strong>Dataprime Ltd</strong> London, UK</p>
+                <p><strong>Email</strong> contact@dataprime.dev</p>
+                <p><strong>Focus</strong> Architecture, performance, delivery systems</p>
+              </div>
             </div>
+
+            <form
+              class="contact-form reveal"
+              data-delay="120"
+              action="https://formspree.io/f/xldvpvzz"
+              method="POST"
+              autocomplete="on"
+            >
+              <input type="hidden" name="_subject" value="New Dataprime inquiry" />
+              <input type="hidden" name="_next" value="https://dataprime.dev/?submitted=true" />
+
+              <label>
+                <span>Name</span>
+                <input type="text" name="name" placeholder="Alex, CTO" required />
+              </label>
+              <label>
+                <span>Email</span>
+                <input type="email" name="email" placeholder="alex@company.com" required />
+              </label>
+              <label>
+                <span>Company / Team</span>
+                <input type="text" name="company" placeholder="Growth Exchange" required />
+              </label>
+              <label>
+                <span>What needs to stay fast and correct?</span>
+                <textarea
+                  name="message"
+                  rows="5"
+                  placeholder="Describe the platform, the pressure points, and what outcome matters most."
+                  required
+                ></textarea>
+              </label>
+
+              <button type="submit" class="btn btn-solid">Send brief</button>
+              <p class="form-note">
+                Prefer direct email? Write to
+                <a href="mailto:review@dataprime.dev">review@dataprime.dev</a>
+              </p>
+            </form>
           </div>
-
-          <form
-            class="contact-form reveal"
-            data-delay="120"
-            action="https://formspree.io/f/xldvpvzz"
-            method="POST"
-            autocomplete="on"
-          >
-            <input type="hidden" name="_subject" value="New Dataprime inquiry" />
-            <input type="hidden" name="_next" value="https://dataprime.dev/?submitted=true" />
-
-            <label>
-              <span>Name</span>
-              <input type="text" name="name" placeholder="Alex, CTO" required />
-            </label>
-            <label>
-              <span>Email</span>
-              <input type="email" name="email" placeholder="alex@company.com" required />
-            </label>
-            <label>
-              <span>Company / Team</span>
-              <input type="text" name="company" placeholder="Growth Exchange" required />
-            </label>
-            <label>
-              <span>What needs to stay fast and correct?</span>
-              <textarea
-                name="message"
-                rows="5"
-                placeholder="Describe your platform, latency targets, operational pain points, and what outcome matters most."
-                required
-              ></textarea>
-            </label>
-
-            <button type="submit" class="btn btn-solid">Send brief</button>
-            <p class="form-note">
-              Prefer direct email? Write to
-              <a href="mailto:review@dataprime.dev">review@dataprime.dev</a>
-            </p>
-          </form>
         </section>
       </main>
 
       <footer class="site-footer">
         <p>
           &copy; <span id="year"></span> Dataprime Ltd.
-          <span>Capital-markets-grade architecture for modern product systems.</span>
+          <span>Enterprise-grade architecture for systems that cannot afford drift.</span>
         </p>
       </footer>
     </div>
