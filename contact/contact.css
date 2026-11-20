@@ -1,0 +1,248 @@
+.contact-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+}
+
+.contact-main {
+  flex: 1;
+  padding-block: clamp(72px, 10vw, 148px) clamp(72px, 9vw, 128px);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: clamp(32px, 7vw, 108px);
+  align-items: center;
+}
+
+.contact-intro h1 {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(76px, 11vw, 164px);
+  font-weight: 560;
+  line-height: .86;
+  letter-spacing: -.05em;
+}
+
+.contact-intro h1 span {
+  color: var(--orange);
+}
+
+.contact-intro > p {
+  max-width: 43ch;
+  margin: clamp(30px, 4vw, 49px) 0 0;
+  color: var(--muted);
+  font-size: clamp(17px, 1.7vw, 21px);
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+.contact-address {
+  margin-top: clamp(26px, 4vw, 46px);
+}
+
+.email-link {
+  display: inline-block;
+  max-width: 100%;
+  min-height: 44px;
+  color: var(--orange);
+  font-size: clamp(23px, 3.1vw, 43px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -.03em;
+  text-decoration: underline;
+  text-decoration-color: #ff70406b;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .2em;
+  overflow-wrap: anywhere;
+  vertical-align: top;
+}
+
+.email-link:hover {
+  text-decoration-color: currentColor;
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 16px;
+  margin-top: 8px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+.copy-address {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 8px;
+  padding: 0 4px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.copy-address:hover {
+  color: var(--ink);
+}
+
+.copy-icon {
+  position: relative;
+  width: 14px;
+  height: 14px;
+}
+
+.copy-icon::before,
+.copy-icon::after {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border: 1px solid currentColor;
+  content: "";
+}
+
+.copy-icon::before {
+  inset: 1px auto auto 1px;
+}
+
+.copy-icon::after {
+  inset: 4px auto auto 4px;
+  background: var(--bg);
+}
+
+.envelope-grid {
+  --grid-line: #292a27;
+  --envelope-line: #626057;
+  --diagonal-start: calc(50% - .65px);
+  --diagonal-end: calc(50% + .65px);
+  position: relative;
+  display: grid;
+  min-width: 0;
+  aspect-ratio: 1.4;
+  place-items: center;
+  border: 1px solid var(--rule);
+  background:
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) center / 26px 26px,
+    linear-gradient(var(--grid-line) 1px, transparent 1px) center / 26px 26px;
+}
+
+.envelope-grid::before,
+.envelope-grid::after {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: var(--orange);
+  content: "";
+}
+
+.envelope-grid::before {
+  inset: -1px auto auto -1px;
+}
+
+.envelope-grid::after {
+  inset: auto -1px -1px auto;
+}
+
+.envelope {
+  position: relative;
+  width: 68%;
+  aspect-ratio: 1.76;
+  border: 1px solid var(--envelope-line);
+  background: var(--bg);
+}
+
+.envelope::before,
+.envelope::after {
+  position: absolute;
+  right: 0;
+  left: 0;
+  background-repeat: no-repeat;
+  background-size: 50% 100%;
+  content: "";
+}
+
+.envelope::before {
+  top: 0;
+  height: 58%;
+  background-image:
+    linear-gradient(to top right, transparent var(--diagonal-start), var(--envelope-line) 50%, transparent var(--diagonal-end)),
+    linear-gradient(to top left, transparent var(--diagonal-start), var(--envelope-line) 50%, transparent var(--diagonal-end));
+  background-position: left top, right top;
+}
+
+.envelope::after {
+  bottom: 0;
+  height: 42%;
+  background-image:
+    linear-gradient(to bottom right, transparent var(--diagonal-start), var(--envelope-line) 50%, transparent var(--diagonal-end)),
+    linear-gradient(to bottom left, transparent var(--diagonal-start), var(--envelope-line) 50%, transparent var(--diagonal-end));
+  background-position: left bottom, right bottom;
+}
+
+.envelope span {
+  position: absolute;
+  z-index: 1;
+  top: 58%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  border: 3px solid var(--bg);
+  border-radius: 50%;
+  background: var(--orange);
+  outline: 1px solid var(--orange);
+  transform: translate(-50%, -50%);
+}
+
+.contact-details {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px 24px;
+  align-items: center;
+  margin-top: clamp(40px, 6vw, 88px);
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+.contact-details p {
+  margin: 0;
+}
+
+.contact-details a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: .25em;
+}
+
+.contact-details a:hover {
+  text-decoration-color: currentColor;
+}
+
+@media (max-width: 760px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .envelope-grid {
+    width: min(100%, 420px);
+  }
+}
+
+@media (max-width: 400px) {
+  .contact-details {
+    flex-wrap: wrap;
+    gap: 2px 16px;
+  }
+}

@@ -1,409 +1,564 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en-GB">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover"
-    />
-    <title>Dataprime Ltd | High-Throughput Systems &amp; Product Architecture</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dataprime — Trading infrastructure consultancy</title>
     <meta
       name="description"
-      content="Dataprime designs and delivers high-throughput systems for markets, commerce, and data-heavy products where correctness and speed are non-negotiable."
+      content="Independent engineering and advisory for trading firms. Dataprime works on market data, execution, risk controls and production trading systems."
     />
-    <meta name="theme-color" content="#071126" />
-    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta name="theme-color" content="#101111" />
+    <link rel="canonical" href="https://dataprime.dev/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Dataprime — Inside the critical path" />
+    <meta
+      property="og:description"
+      content="Independent trading infrastructure consultancy. Market data, pre-trade risk, execution and production engineering."
+    />
+    <meta property="og:url" content="https://dataprime.dev/" />
+    <meta
+      property="og:image"
+      content="https://dataprime.dev/assets/optical-study.jpg"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Lexend:wght@600;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Sora:wght@400;500;600;700;800&amp;display=swap"
-      rel="stylesheet"
+      rel="preload"
+      href="/assets/fonts/instrument-sans-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/practice.css" />
+    <link rel="stylesheet" href="/notes.css" />
+    <script src="/script.js" defer></script>
+    <script src="/practice.js" defer></script>
   </head>
-  <body>
-    <div class="scroll-progress" aria-hidden="true"><span></span></div>
-    <canvas id="ambientCanvas" aria-hidden="true"></canvas>
-    <div class="noise-overlay" aria-hidden="true"></div>
-
-    <div class="page-shell">
-      <header class="site-header">
-        <a href="#hero" class="brand" data-scroll-to="#hero">
-          <span class="brand-mark">
-            <img class="brand-logo" src="./assets/dataprime-logo.svg" alt="Dataprime" />
-          </span>
-          <div class="brand-text">
-            <span class="brand-name">Dataprime</span>
-            <span class="brand-tag">High-Throughput Systems</span>
-          </div>
-        </a>
-
-        <button
-          class="nav-toggle"
-          aria-label="Toggle menu"
-          aria-expanded="false"
-          aria-controls="site-nav"
+  <body id="top">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="masthead">
+      <div class="wrap nav-row">
+        <a class="wordmark" href="/" aria-label="Dataprime home"
+          ><img
+            src="/assets/mark.svg"
+            alt=""
+            width="31"
+            height="31"
+          />Dataprime</a
         >
-          <span></span><span></span><span></span>
-        </button>
-
-        <nav class="site-nav" id="site-nav">
-          <a href="#domains" data-scroll-to="#domains">Domains</a>
-          <a href="#services" data-scroll-to="#services">Services</a>
-          <a href="#outcomes" data-scroll-to="#outcomes">Outcomes</a>
-          <a href="#approach" data-scroll-to="#approach">Approach</a>
-          <a href="#contact" data-scroll-to="#contact">Contact</a>
+        <nav class="primary-nav" aria-label="Main navigation">
+          <a href="#practice">Practice</a><a href="#notes">Field notes</a
+          ><a class="contact-link" href="/contact/">Contact</a>
         </nav>
-
-        <a class="btn btn-solid header-cta" href="#contact" data-scroll-to="#contact"
-          >Book a call</a
-        >
-      </header>
-
-      <main>
-        <section class="hero section" id="hero">
+      </div>
+    </header>
+    <main id="main" tabindex="-1">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="wrap hero-grid">
           <div class="hero-copy">
-            <p class="eyebrow reveal">Dataprime Ltd</p>
-            <h1 class="reveal" data-delay="80">
-              Build systems that stay fast
-              <span class="ink-gradient">when the stakes go up.</span>
+            <p class="kicker">
+              <span class="signal-icon" aria-hidden="true"
+                ><i></i><i></i><i></i><i></i><i></i></span
+              >Trading infrastructure consultancy
+            </p>
+            <h1 id="hero-title">
+              Inside the<br /><span
+                >critical path<span class="stop">.</span></span
+              >
             </h1>
-            <p class="lead reveal" data-delay="140">
-              We bring capital-markets discipline into product engineering, so your team can
-              ship faster while latency, reliability, and auditability remain under control.
+            <p class="hero-lead">
+              We design and tune the systems between a market update and an
+              executed order. Independent engineering and advisory for trading
+              firms.
             </p>
-
-            <div class="hero-actions reveal" data-delay="200">
-              <a class="btn btn-solid" href="#contact" data-scroll-to="#contact"
-                >Request architecture review</a
+            <a class="practice-link" href="#practice"
+              ><span class="link-symbol" aria-hidden="true"
+                ><i></i><i></i><i></i></span
+              >Explore the practice</a
+            >
+          </div>
+          <figure class="study" aria-label="Optical fibre study">
+            <span class="registration reg-start" aria-hidden="true"></span
+            ><span class="registration reg-end" aria-hidden="true"></span>
+            <div class="study-viewport">
+              <picture class="assembly-view">
+                <source
+                  type="image/webp"
+                  srcset="
+                    /assets/optical-800.webp   800w,
+                    /assets/optical-1536.webp 1536w
+                  "
+                  sizes="(max-width: 760px) 100vw, 65vw"
+                />
+                <img
+                  src="/assets/optical-study.jpg"
+                  alt="Cutaway study of an optical cable, its dark machined sleeve opening into a fan of orange glass fibres."
+                  width="1536"
+                  height="1024"
+                  fetchpriority="high"
+                />
+              </picture>
+              <img
+                class="section-view"
+                src="/assets/fibre-section.svg"
+                alt="Schematic cross-section of cladding and optical core inside a protective jacket."
+                width="720"
+                height="500"
+                hidden
+              />
+            </div>
+            <figcaption class="study-caption">
+              <span class="study-title"
+                ><span class="specimen-glyph" aria-hidden="true"></span>Optical
+                fibre study</span
               >
-              <a class="btn btn-ghost" href="#services" data-scroll-to="#services"
-                >Explore services</a
+              <div
+                class="view-controls"
+                role="group"
+                aria-label="Optical study view"
+                hidden
               >
-            </div>
-
-            <ul class="hero-tags reveal" data-delay="240" aria-label="Capabilities">
-              <li>Low-latency architecture</li>
-              <li>Production modernization</li>
-              <li>Risk-aware delivery</li>
-            </ul>
-
-            <div class="hero-proof reveal" data-delay="280" aria-label="Program strengths">
-              <article>
-                <h3>Operating Clarity</h3>
-                <p>Architecture choices become explicit, traceable, and reviewable.</p>
-              </article>
-              <article>
-                <h3>Execution Confidence</h3>
-                <p>Delivery speed rises without sacrificing correctness in critical flows.</p>
-              </article>
-              <article>
-                <h3>Platform Maturity</h3>
-                <p>Systems stay dependable as complexity and volume increase.</p>
-              </article>
-            </div>
-          </div>
-
-          <aside class="hero-stage reveal" data-delay="220" aria-label="Live system snapshot">
-            <div class="stage-head">
-              <div>
-                <p class="stage-eyebrow">Live Program Cockpit</p>
-                <h2>Cyber agents coordinating code and digital ops in real time.</h2>
+                <button type="button" aria-pressed="true" data-view="assembly">
+                  Assembly</button
+                ><button type="button" aria-pressed="false" data-view="section">
+                  Section
+                </button>
               </div>
-              <span class="stage-pill">Cyber ops live</span>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+      <aside
+        class="clock-strip"
+        aria-label="Current local time in financial centres"
+        hidden
+      >
+        <div class="wrap clock-row">
+          <div class="clock-heading">
+            <svg
+              viewBox="0 0 24 24"
+              width="17"
+              height="17"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.45"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="9.25" />
+              <ellipse cx="12" cy="12" rx="4" ry="9.25" />
+              <path d="M3 12h18" /></svg
+            >Market clocks
+          </div>
+          <div class="clock">
+            <span>New York</span><time data-zone="America/New_York"></time>
+          </div>
+          <div class="clock">
+            <span>London</span><time data-zone="Europe/London"></time>
+          </div>
+          <div class="clock">
+            <span>Tokyo</span><time data-zone="Asia/Tokyo"></time>
+          </div>
+        </div>
+      </aside>
+      <section
+        class="practice"
+        id="practice"
+        aria-labelledby="practice-heading"
+      >
+        <div class="wrap">
+          <header class="practice-header">
+            <div>
+              <p class="practice-eyebrow">The practice</p>
+              <h2 id="practice-heading">From tick to trade.</h2>
+            </div>
+            <p class="practice-intro">
+              We join trading desks and engineering teams for architecture
+              reviews, hands-on builds and production investigations.
+            </p>
+          </header>
+
+          <div class="practice-module">
+            <div
+              class="practice-tabs"
+              role="tablist"
+              aria-label="Trading infrastructure practice"
+              hidden
+            >
+              <button
+                type="button"
+                role="tab"
+                id="practice-tab-data"
+                aria-controls="practice-panel-data"
+                aria-selected="true"
+                data-practice-stage="data"
+              >
+                Market data
+              </button>
+              <button
+                type="button"
+                role="tab"
+                id="practice-tab-execution"
+                aria-controls="practice-panel-execution"
+                aria-selected="false"
+                tabindex="-1"
+                data-practice-stage="execution"
+              >
+                Execution
+              </button>
+              <button
+                type="button"
+                role="tab"
+                id="practice-tab-risk"
+                aria-controls="practice-panel-risk"
+                aria-selected="false"
+                tabindex="-1"
+                data-practice-stage="risk"
+              >
+                Risk
+              </button>
+              <button
+                type="button"
+                role="tab"
+                id="practice-tab-production"
+                aria-controls="practice-panel-production"
+                aria-selected="false"
+                tabindex="-1"
+                data-practice-stage="production"
+              >
+                Production
+              </button>
             </div>
 
-            <div class="cyber-scene" aria-label="Animated cyber agent operations">
-              <div class="cyber-grid" aria-hidden="true"></div>
-              <div class="code-rain" aria-hidden="true">
-                <span>git push origin codex/latency-router-hardening</span>
-                <span>agent://vega compile orchestration graph --safe-mode</span>
-                <span>diff --stream /core/trade-paths/recovery.ts</span>
-                <span>event bus sync: contracts/states/order.fill.v3</span>
-                <span>ops.scan validating release gates and rollback mesh</span>
+            <div class="practice-content">
+              <div class="practice-panels">
+                <article
+                  class="practice-panel"
+                  id="practice-panel-data"
+                  aria-labelledby="practice-title-data"
+                >
+                  <h3 id="practice-title-data">Make the book trustworthy.</h3>
+                  <p>
+                    We build feed handlers and order books that keep sequence
+                    gaps, venue quirks and stale data from leaking into trading
+                    decisions.
+                  </p>
+                  <ul
+                    class="practice-topics"
+                    aria-label="Market data capabilities"
+                  >
+                    <li>Feed handlers</li>
+                    <li>Book reconstruction</li>
+                    <li>Gap recovery</li>
+                  </ul>
+                </article>
+                <article
+                  class="practice-panel"
+                  id="practice-panel-execution"
+                  aria-labelledby="practice-title-execution"
+                >
+                  <h3 id="practice-title-execution">
+                    Keep order state unambiguous.
+                  </h3>
+                  <p>
+                    We design order gateways and lifecycle logic that reconcile
+                    working orders, cancels and fills, including after a broken
+                    session.
+                  </p>
+                  <ul
+                    class="practice-topics"
+                    aria-label="Execution capabilities"
+                  >
+                    <li>Venue connectivity</li>
+                    <li>Order state</li>
+                    <li>Session recovery</li>
+                  </ul>
+                </article>
+                <article
+                  class="practice-panel"
+                  id="practice-panel-risk"
+                  aria-labelledby="practice-title-risk"
+                >
+                  <h3 id="practice-title-risk">
+                    Check risk before orders leave.
+                  </h3>
+                  <p>
+                    We put exposure limits and order validation in the
+                    submission path, with explicit behaviour for stale inputs,
+                    rejects and trading halts.
+                  </p>
+                  <ul class="practice-topics" aria-label="Risk capabilities">
+                    <li>Pre-trade controls</li>
+                    <li>Exposure limits</li>
+                    <li>Kill switches</li>
+                  </ul>
+                </article>
+                <article
+                  class="practice-panel"
+                  id="practice-panel-production"
+                  aria-labelledby="practice-title-production"
+                >
+                  <h3 id="practice-title-production">
+                    Make failures reproducible.
+                  </h3>
+                  <p>
+                    We trace latency across the trading path and use event
+                    replay to reconstruct failures, test recovery and build
+                    practical runbooks.
+                  </p>
+                  <ul
+                    class="practice-topics"
+                    aria-label="Production capabilities"
+                  >
+                    <li>Latency profiling</li>
+                    <li>Event replay</li>
+                    <li>Operational runbooks</li>
+                  </ul>
+                </article>
               </div>
-              <svg class="agent-links" viewBox="0 0 520 300" preserveAspectRatio="none" aria-hidden="true">
-                <path d="M80 64 L252 110 L426 68" />
-                <path d="M80 64 L172 232 L346 232 L426 68" />
-                <path d="M252 110 L252 254" />
-              </svg>
-              <div class="agent-network">
-                <div class="agent-node node-a">
-                  <p class="agent-name">Agent Vega</p>
-                  <p class="agent-task">refactoring failover orchestration</p>
-                </div>
-                <div class="agent-node node-b">
-                  <p class="agent-name">Agent Nyx</p>
-                  <p class="agent-task">hardening event contracts</p>
-                </div>
-                <div class="agent-node node-c">
-                  <p class="agent-name">Agent Orion</p>
-                  <p class="agent-task">auditing runtime guardrails</p>
-                </div>
-                <div class="agent-node node-d">
-                  <p class="agent-name">Agent Sol</p>
-                  <p class="agent-task">streaming telemetry patches</p>
-                </div>
-              </div>
+
+              <figure class="practice-figure">
+                <figcaption>Illustrative trading path</figcaption>
+                <svg
+                  class="practice-schematic"
+                  viewBox="0 0 638 300"
+                  role="img"
+                  aria-labelledby="practice-diagram-title practice-diagram-description"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <title id="practice-diagram-title">
+                    An electronic trading path
+                  </title>
+                  <desc id="practice-diagram-description">
+                    Market feeds update the order book, which a strategy uses to
+                    generate orders. A pre-trade risk check gates orders on the
+                    way to the venue. Venue acknowledgements and fills return to
+                    the strategy's order management. Production telemetry and
+                    replay span the path.
+                  </desc>
+                  <defs>
+                    <pattern
+                      id="practice-grid"
+                      width="20"
+                      height="20"
+                      patternUnits="userSpaceOnUse"
+                    >
+                      <path d="M 20 0 H 0 V 20" />
+                    </pattern>
+                  </defs>
+
+                  <path class="practice-grid" d="M0 0H638V300H0Z" />
+                  <path
+                    class="practice-field-guides"
+                    d="M1 70V1h72 M565 1h72v69 M637 229v70h-72 M73 299H1v-70"
+                  />
+
+                  <g class="practice-route practice-path-production">
+                    <path
+                      d="M76 165 V258 H202 M236 165 V232 M398 165 V232 M558 203 V258 H438"
+                    />
+                    <circle cx="76" cy="258" r="3" />
+                    <circle cx="558" cy="258" r="3" />
+                  </g>
+                  <g
+                    class="practice-route practice-path-execution practice-reply"
+                  >
+                    <path d="M558 165 V202 H312 V78 M308 84 L312 78 L316 84" />
+                    <text x="459" y="194" text-anchor="middle">ACK / FILL</text>
+                  </g>
+                  <g class="practice-route practice-path-data">
+                    <path
+                      d="M132 137 H174 M168 133 L174 137 L168 141 M236 109 V54 H274 M268 50 L274 54 L268 58"
+                    />
+                  </g>
+                  <g class="practice-route practice-path-risk">
+                    <path d="M397 54 H426 V110 M422 104 L426 110 L430 104" />
+                  </g>
+                  <g
+                    class="practice-route practice-path-execution practice-path-risk"
+                  >
+                    <path d="M460 137 H500 M494 133 L500 137 L494 141" />
+                  </g>
+
+                  <g class="practice-node practice-path-data">
+                    <rect x="20" y="110" width="112" height="54" />
+                    <text x="76" y="138">Feed</text>
+                  </g>
+                  <g class="practice-node practice-path-data">
+                    <rect x="174" y="110" width="124" height="54" />
+                    <text x="236" y="138">Order book</text>
+                  </g>
+                  <g
+                    class="practice-node practice-path-data practice-path-execution practice-path-risk"
+                  >
+                    <rect x="274" y="31" width="123" height="46" />
+                    <text x="335.5" y="55">Strategy</text>
+                  </g>
+                  <g class="practice-node practice-path-risk">
+                    <rect x="336" y="110" width="124" height="54" />
+                    <text x="398" y="138">Risk check</text>
+                  </g>
+                  <g class="practice-node practice-path-execution">
+                    <rect x="500" y="110" width="116" height="54" />
+                    <text x="558" y="138">Venue</text>
+                  </g>
+                  <g class="practice-node practice-path-production">
+                    <rect x="202" y="232" width="236" height="51" />
+                    <text x="320" y="258">Telemetry / replay</text>
+                  </g>
+                </svg>
+              </figure>
             </div>
-
-            <div class="stage-feed" aria-label="Recent delivery highlights">
-              <article>
-                <span class="pulse-dot"></span>
-                <p>Agent swarm merged deterministic retry paths for critical transaction edges.</p>
-              </article>
-              <article>
-                <span class="pulse-dot"></span>
-                <p>Code graph now auto-detects schema drift before release artifacts are promoted.</p>
-              </article>
-              <article>
-                <span class="pulse-dot"></span>
-                <p>Live observability mesh aligns incidents to service ownership in a single trace.</p>
-              </article>
-            </div>
-          </aside>
-        </section>
-
-        <section class="signal-loop" aria-label="Operational outcomes">
-          <div class="loop-track">
-            <span>Deterministic throughput</span>
-            <span>Traceable decisions</span>
-            <span>Faster incident recovery</span>
-            <span>Clear ownership boundaries</span>
-            <span>Lower regression risk</span>
-            <span>Deterministic throughput</span>
-            <span>Traceable decisions</span>
-            <span>Faster incident recovery</span>
-            <span>Clear ownership boundaries</span>
-            <span>Lower regression risk</span>
           </div>
-        </section>
+        </div>
+      </section>
+      <section
+        class="field-notes"
+        id="notes"
+        aria-labelledby="field-notes-heading"
+      >
+        <div class="wrap">
+          <h2 class="field-notes__heading" id="field-notes-heading">
+            Field notes
+          </h2>
 
-        <section class="section section-shell" id="domains">
-          <div class="section-head reveal">
-            <p class="eyebrow">Domains</p>
-            <h2>Built for teams where delay, drift, or ambiguity is expensive.</h2>
-            <p>
-              We work with leaders running continuous transaction flows and data-intensive
-              decision engines that need both precision and speed at scale.
-            </p>
-          </div>
-
-          <div class="domain-grid">
-            <article class="domain-card reveal" data-delay="20">
-              <p class="card-tag">Markets</p>
-              <h3>Trading &amp; Exchange Infrastructure</h3>
-              <p>
-                Matching flows, risk checks, and venue integrations tuned for predictable
-                behavior under load.
-              </p>
-            </article>
-            <article class="domain-card reveal" data-delay="80">
-              <p class="card-tag">Commerce</p>
-              <h3>Marketplaces &amp; Order Systems</h3>
-              <p>
-                Inventory, fulfillment, and pricing pipelines designed for consistency across
-                channels and spikes.
-              </p>
-            </article>
-            <article class="domain-card reveal" data-delay="140">
-              <p class="card-tag">Data Platforms</p>
-              <h3>Signal Ingestion &amp; Decisioning</h3>
-              <p>
-                Event contracts, processing layers, and model-serving paths that keep outputs
-                trustworthy in real time.
-              </p>
-            </article>
-          </div>
-        </section>
-
-        <section class="section section-shell services" id="services">
-          <div class="section-head reveal">
-            <p class="eyebrow">Services</p>
-            <h2>Advisory depth plus hands-on build execution.</h2>
-            <p>
-              We do not hand over slide decks and disappear. We stay inside the engineering
-              reality until the hard parts are stable.
-            </p>
-          </div>
-
-          <div class="service-layout">
-            <article class="service-card feature reveal">
-              <p class="card-tag">Core engagement</p>
-              <h3>Embedded Architecture Partner</h3>
-              <p>
-                Senior-level decision support and implementation leadership for your
-                highest-impact system paths.
-              </p>
-              <ul class="check-list">
-                <li>Risk and latency map of your critical flows</li>
-                <li>Architecture decision records your team can sustain</li>
-                <li>Execution coaching for delivery and platform leads</li>
-              </ul>
-            </article>
-
-            <div class="service-stack">
-              <article class="service-card reveal" data-delay="40">
-                <p class="card-tag">Build</p>
-                <h3>Targeted Systems Delivery</h3>
+          <div class="field-notes__layout">
+            <figure class="field-notes__figure">
+              <img
+                src="./assets/notes/atlantic-great-circle.webp"
+                alt="Map of the North Atlantic showing the great-circle arc from New York to London."
+                width="1520"
+                height="906"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption class="field-notes__caption">
+                <dl class="field-notes__measurements">
+                  <div>
+                    <dt>Great-circle distance</dt>
+                    <dd>5,570 <span>km</span></dd>
+                  </div>
+                  <div>
+                    <dt>One-way fibre estimate</dt>
+                    <dd>≈28 <span>ms</span></dd>
+                  </div>
+                </dl>
                 <p>
-                  We ship the control planes, orchestration points, and data contracts that
-                  remove repeated operational friction.
+                  City centres shown. Made with
+                  <a
+                    href="https://www.naturalearthdata.com/downloads/110m-physical-vectors/110m-land/"
+                    >Natural Earth</a
+                  >.
                 </p>
+              </figcaption>
+            </figure>
+
+            <div class="field-notes__articles">
+              <article
+                class="field-notes__article"
+                aria-labelledby="note-distance"
+              >
+                <p class="field-notes__topic">Network architecture</p>
+                <h3 id="note-distance">Distance sets the floor</h3>
+                <p class="field-notes__dek">
+                  Start with the propagation budget before tuning the code on
+                  either end.
+                </p>
+                <details class="field-notes__disclosure">
+                  <summary>
+                    <span class="field-notes__read">Read note</span>
+                    <span class="field-notes__close">Close note</span>
+                    <span class="field-notes__sr-only">
+                      on the latency floor</span
+                    >
+                    <span class="field-notes__toggle" aria-hidden="true"></span>
+                  </summary>
+                  <div class="field-notes__body">
+                    <p>
+                      New York and London are about 5,570 km apart along a great
+                      circle. At a rounded 200,000 km/s in glass, a fibre that
+                      followed that line would take about 28 ms to carry a
+                      signal one way. Installed cable length, equipment and
+                      queueing add to that illustrative budget.
+                    </p>
+                    <p>
+                      For an order path, trace the elapsed time from market-data
+                      arrival to the order leaving the gateway. Timestamp feed
+                      ingress, book update, decision and send. Compare spans on
+                      the same clock where possible. Across hosts, measure clock
+                      offset and include the uncertainty in the result.
+                    </p>
+                    <p>
+                      A tail that grows in bursts points to a different
+                      investigation than a steady offset. Break down queue time
+                      and processing time under representative load before
+                      deciding where to optimise.
+                      <a
+                        href="https://www.corning.com/media/worldwide/coc/documents/Fiber/white-paper/WP8080_03-11.pdf"
+                        >Corning’s optical propagation analysis</a
+                      >.
+                    </p>
+                  </div>
+                </details>
               </article>
-              <article class="service-card reveal" data-delay="90">
-                <p class="card-tag">Scale</p>
-                <h3>Performance &amp; Reliability Modernization</h3>
-                <p>
-                  Profiling-led refactors and observability redesign for teams that have
-                  outgrown their first platform architecture.
+
+              <article class="field-notes__article" aria-labelledby="note-feed">
+                <p class="field-notes__topic">Market data</p>
+                <h3 id="note-feed">When a feed falls silent</h3>
+                <p class="field-notes__dek">
+                  Define what counts as a usable book during a quiet market, a
+                  sequence gap and a replay.
                 </p>
-              </article>
-              <article class="service-card reveal" data-delay="140">
-                <p class="card-tag">Enablement</p>
-                <h3>Operating Cadence &amp; Team Uplift</h3>
-                <p>
-                  We install repeatable rituals that keep architecture quality high across
-                  future releases.
-                </p>
+                <details class="field-notes__disclosure">
+                  <summary>
+                    <span class="field-notes__read">Read note</span>
+                    <span class="field-notes__close">Close note</span>
+                    <span class="field-notes__sr-only">
+                      on market-data recovery</span
+                    >
+                    <span class="field-notes__toggle" aria-hidden="true"></span>
+                  </summary>
+                  <div class="field-notes__body">
+                    <p>
+                      During a quiet market, track transport liveness and book
+                      completeness separately. Track the next expected sequence
+                      number for each feed session. On MoldUDP64, the heartbeat
+                      carries that sequence, so a receiver can detect a missing
+                      message between market updates.
+                      <a
+                        href="https://www.nasdaqtrader.com/content/technicalsupport/specifications/dataproducts/moldudp64.pdf"
+                        >Nasdaq’s MoldUDP64 specification</a
+                      >.
+                    </p>
+                    <p>
+                      When a gap appears, mark the affected books as recovering
+                      and tell downstream consumers which decisions can proceed.
+                      Buffer live updates during replay. If the missing range
+                      has aged out and the venue supports sequenced snapshots,
+                      rebuild at the snapshot boundary and apply the contiguous
+                      updates that follow it.
+                    </p>
+                    <p>
+                      Set the return-to-live test in advance. Require a
+                      contiguous sequence and a backlog within the freshness
+                      budget. Record the gap range, the recovery source and the
+                      time until the book was usable again.
+                    </p>
+                  </div>
+                </details>
               </article>
             </div>
           </div>
-        </section>
-
-        <section class="section section-shell outcomes" id="outcomes">
-          <div class="section-head reveal">
-            <p class="eyebrow">Outcomes</p>
-            <h2>What stronger architecture unlocks in practice.</h2>
-          </div>
-
-          <div class="outcome-grid">
-            <article class="outcome-card reveal" data-delay="0">
-              <p class="outcome-eyebrow">Execution</p>
-              <h3>Release velocity rises without integrity tradeoffs.</h3>
-              <p>
-                Teams gain clearer boundaries and fewer emergency rollbacks because quality
-                controls move earlier into the flow.
-              </p>
-            </article>
-            <article class="outcome-card reveal" data-delay="70">
-              <p class="outcome-eyebrow">Operations</p>
-              <h3>Incidents become shorter and easier to reason about.</h3>
-              <p>
-                Observability aligns to business-critical pathways, so on-call response is
-                guided by real system behavior rather than guesswork.
-              </p>
-            </article>
-            <article class="outcome-card reveal" data-delay="140">
-              <p class="outcome-eyebrow">Leadership</p>
-              <h3>Architecture decisions become clear, explicit, and durable.</h3>
-              <p>
-                Product and engineering leadership get confidence in tradeoffs with records,
-                traceability, and measurable performance baselines.
-              </p>
-            </article>
-          </div>
-        </section>
-
-        <section class="section section-shell approach" id="approach">
-          <div class="section-head reveal">
-            <p class="eyebrow">Approach</p>
-            <h2>Fast alignment. Structured execution. Lasting capability.</h2>
-          </div>
-
-          <div class="approach-grid">
-            <article class="approach-step reveal" data-delay="0">
-              <span>01</span>
-              <h3>Decode the system</h3>
-              <p>
-                We map your critical pathways, ownership boundaries, and hidden coupling in
-                days, not months.
-              </p>
-            </article>
-            <article class="approach-step reveal" data-delay="80">
-              <span>02</span>
-              <h3>Prioritize the leverage points</h3>
-              <p>
-                We isolate high-value architecture moves that reduce risk while raising
-                delivery speed.
-              </p>
-            </article>
-            <article class="approach-step reveal" data-delay="160">
-              <span>03</span>
-              <h3>Build and transfer capability</h3>
-              <p>
-                We deliver with your team, codify patterns, and leave operations stronger than
-                they started.
-              </p>
-            </article>
-          </div>
-        </section>
-
-        <section class="section contact" id="contact">
-          <div class="contact-copy reveal">
-            <p class="eyebrow">Start the engagement</p>
-            <h2>Bring us the hardest system path in your platform.</h2>
-            <p>
-              Share your context, constraints, and what must stay fast and correct. We will
-              respond with a practical next-step recommendation.
-            </p>
-            <div class="contact-points">
-              <p><strong>Dataprime Ltd</strong> London, UK</p>
-              <p><strong>Email</strong> contact@dataprime.dev</p>
-              <p><strong>Focus</strong> Architecture, performance, delivery systems</p>
-            </div>
-          </div>
-
-          <form
-            class="contact-form reveal"
-            data-delay="120"
-            action="https://formspree.io/f/xldvpvzz"
-            method="POST"
-            autocomplete="on"
-          >
-            <input type="hidden" name="_subject" value="New Dataprime inquiry" />
-            <input type="hidden" name="_next" value="https://dataprime.dev/?submitted=true" />
-
-            <label>
-              <span>Name</span>
-              <input type="text" name="name" placeholder="Alex, CTO" required />
-            </label>
-            <label>
-              <span>Email</span>
-              <input type="email" name="email" placeholder="alex@company.com" required />
-            </label>
-            <label>
-              <span>Company / Team</span>
-              <input type="text" name="company" placeholder="Growth Exchange" required />
-            </label>
-            <label>
-              <span>What needs to stay fast and correct?</span>
-              <textarea
-                name="message"
-                rows="5"
-                placeholder="Describe your platform, latency targets, operational pain points, and what outcome matters most."
-                required
-              ></textarea>
-            </label>
-
-            <button type="submit" class="btn btn-solid">Send brief</button>
-            <p class="form-note">
-              Prefer direct email? Write to
-              <a href="mailto:review@dataprime.dev">review@dataprime.dev</a>
-            </p>
-          </form>
-        </section>
-      </main>
-
-      <footer class="site-footer">
-        <p>
-          &copy; <span id="year"></span> Dataprime Ltd.
-          <span>Capital-markets-grade architecture for modern product systems.</span>
-        </p>
-      </footer>
-    </div>
-
-    <script src="./script.js"></script>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="wrap footer-row">
+        <span>© Dataprime Ltd</span
+        ><span class="footer-location">London, UK</span
+        ><a href="/contact/">Contact</a>
+      </div>
+    </footer>
   </body>
 </html>

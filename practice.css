@@ -1,0 +1,353 @@
+.practice {
+  --practice-ink: #f1efe6;
+  --practice-muted: #b0afa6;
+  --practice-rule: #393b36;
+  --practice-signal: #ff7040;
+  padding-block: clamp(4.5rem, 9vw, 8rem);
+  color: var(--practice-ink);
+}
+
+.practice-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(14rem, 0.45fr);
+  align-items: end;
+  gap: 1.5rem 3rem;
+  margin-bottom: clamp(1.8rem, 4vw, 3rem);
+}
+
+.practice-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.72rem;
+  margin: 0 0 1.05rem;
+  font-family: var(--mono, monospace);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.practice-eyebrow::before {
+  width: 1.6rem;
+  height: 1px;
+  flex: none;
+  background: var(--practice-signal);
+  content: "";
+}
+
+.practice-header h2 {
+  margin: 0;
+  font-family: var(--sans, sans-serif);
+  font-size: clamp(2.75rem, 6.35vw, 6.4rem);
+  font-weight: 500;
+  line-height: 0.97;
+  letter-spacing: -0.052em;
+}
+
+.practice-intro {
+  max-width: 32ch;
+  margin: 0;
+  color: var(--practice-muted);
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  line-height: 1.56;
+}
+
+.practice-module {
+  border: 1px solid var(--practice-rule);
+}
+
+.practice-tabs[hidden],
+.practice-panel[hidden] {
+  display: none;
+}
+
+.practice-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-bottom: 1px solid var(--practice-rule);
+}
+
+.practice-tabs button {
+  position: relative;
+  min-width: 0;
+  min-height: 3.5rem;
+  padding: 0.9rem clamp(0.7rem, 2.6vw, 1.65rem);
+  border: 0;
+  border-right: 1px solid var(--practice-rule);
+  border-radius: 0;
+  appearance: none;
+  background: transparent;
+  color: var(--practice-muted);
+  font: 500 clamp(0.73rem, 1.35vw, 0.95rem)/1.2 var(--mono, monospace);
+  text-align: left;
+  cursor: pointer;
+  transition: color 160ms ease, background-color 160ms ease;
+}
+
+.practice-tabs button:last-child {
+  border-right: 0;
+}
+
+.practice-tabs button:hover,
+.practice-tabs button[aria-selected="true"] {
+  background: #1a1a17;
+  color: var(--practice-ink);
+}
+
+.practice-tabs button[aria-selected="true"]::after {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+  background: var(--practice-signal);
+  content: "";
+}
+
+.practice-tabs button:focus-visible,
+.practice-panel:focus-visible {
+  z-index: 1;
+  outline: 2px solid var(--practice-signal);
+  outline-offset: -4px;
+}
+
+.practice-content {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+}
+
+.practice-panels {
+  display: grid;
+  align-content: start;
+}
+
+.practice-panel {
+  padding: clamp(1.4rem, 4vw, 3.1rem);
+}
+
+.practice-panel + .practice-panel {
+  border-top: 1px solid var(--practice-rule);
+}
+
+.practice[data-practice-active] .practice-panel {
+  grid-area: 1 / 1;
+  min-height: 20.25rem;
+  border-top: 0;
+}
+
+.practice[data-practice-active] .practice-panel[hidden] {
+  /* Keep the tallest panel in the grid sizing without exposing its contents. */
+  display: block;
+  visibility: hidden;
+}
+
+.practice-panel h3 {
+  max-width: 16ch;
+  margin: 0 0 0.9rem;
+  font-family: var(--sans, sans-serif);
+  font-size: clamp(1.7rem, 3vw, 2.65rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.038em;
+}
+
+.practice-panel p {
+  max-width: 42ch;
+  margin: 0;
+  color: var(--practice-muted);
+  font-size: clamp(1rem, 1.25vw, 1.1rem);
+  line-height: 1.57;
+}
+
+.practice-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1rem;
+  margin: 1.6rem 0 0;
+  padding: 1rem 0 0;
+  border-top: 1px solid var(--practice-rule);
+  list-style: none;
+  color: #d1cdc1;
+  font-family: var(--mono, monospace);
+  font-size: clamp(0.675rem, 0.99vw, 0.75rem);
+  line-height: 1.45;
+}
+
+.practice-topics li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+}
+
+.practice-topics li::before {
+  width: 0.27rem;
+  height: 0.27rem;
+  align-self: center;
+  flex: none;
+  background: var(--practice-signal);
+  content: "";
+}
+
+.practice-figure {
+  display: grid;
+  align-content: center;
+  gap: 1rem;
+  min-width: 0;
+  margin: 0;
+  padding: clamp(1.25rem, 3.1vw, 2.5rem);
+  border-left: 1px solid var(--practice-rule);
+  background: #141614;
+}
+
+.practice-figure figcaption {
+  color: var(--practice-muted);
+  font-family: var(--mono, monospace);
+  font-size: 0.7rem;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.practice-figure .practice-schematic {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.practice-grid {
+  fill: url("#practice-grid");
+  opacity: 0.52;
+}
+
+#practice-grid path {
+  fill: none;
+  stroke: #31332e;
+  stroke-width: 0.8;
+}
+
+.practice-field-guides {
+  fill: none;
+  stroke: #494a43;
+  stroke-width: 1;
+}
+
+.practice-route,
+.practice-node {
+  --practice-plot-line: #65675e;
+  --practice-plot-text: #c0c0b6;
+  --practice-plot-fill: #1a1c19;
+}
+
+.practice-route path,
+.practice-route circle {
+  fill: none;
+  stroke: var(--practice-plot-line);
+  stroke-width: 1.55;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke 160ms ease;
+}
+
+.practice-reply path,
+.practice-route.practice-path-production path {
+  stroke-dasharray: 3 4;
+}
+
+.practice-node rect {
+  fill: var(--practice-plot-fill);
+  stroke: var(--practice-plot-line);
+  stroke-width: 1.4;
+  transition: fill 160ms ease, stroke 160ms ease;
+}
+
+.practice-route text,
+.practice-node text {
+  fill: var(--practice-plot-text);
+  font-family: var(--mono, monospace);
+  font-size: 15px;
+  letter-spacing: -0.025em;
+  transition: fill 160ms ease;
+}
+
+.practice-node text {
+  font-size: 20px;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+.practice[data-practice-active="data"] .practice-path-data,
+.practice[data-practice-active="execution"] .practice-path-execution,
+.practice[data-practice-active="risk"] .practice-path-risk,
+.practice[data-practice-active="production"] .practice-path-production {
+  --practice-plot-line: var(--practice-signal);
+  --practice-plot-text: #ffe5d7;
+  --practice-plot-fill: #312018;
+}
+
+@media (max-width: 760px) {
+  .practice-header,
+  .practice-content {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .practice-header h2 {
+    font-size: clamp(2.65rem, 10vw, 5rem);
+  }
+
+  .practice-intro {
+    max-width: 45ch;
+  }
+
+  .practice[data-practice-active] .practice-panel {
+    min-height: 16rem;
+  }
+
+  .practice-figure {
+    border-top: 1px solid var(--practice-rule);
+    border-left: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .practice-tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .practice-tabs button {
+    min-height: 2.75rem;
+    padding-inline: 0.85rem;
+  }
+
+  .practice-tabs button:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--practice-rule);
+  }
+
+  .practice-tabs button:nth-child(even) {
+    border-right: 0;
+  }
+
+  .practice-tabs button[aria-selected="true"]::after {
+    bottom: 0;
+  }
+
+  .practice-panel {
+    padding-inline: 1.1rem;
+  }
+
+  .practice-figure {
+    padding-inline: 0.85rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .practice-tabs button,
+  .practice-route path,
+  .practice-route circle,
+  .practice-route text,
+  .practice-node rect,
+  .practice-node text {
+    transition: none;
+  }
+}

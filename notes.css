@@ -1,0 +1,221 @@
+.field-notes {
+  --notes-ink: #f1efe6;
+  --notes-muted: #b9b7ad;
+  --notes-line: #393a34;
+  --notes-accent: #ff7040;
+  background: #101111;
+  color: var(--notes-ink);
+  padding-block: clamp(4rem, 8vw, 7.5rem);
+}
+
+.field-notes__heading {
+  margin: 0 0 clamp(1.8rem, 4.6vw, 4rem);
+  font-family: var(--sans, "Instrument Sans", sans-serif);
+  font-size: clamp(3.25rem, 6vw, 6.5rem);
+  font-weight: 600;
+  letter-spacing: -0.075em;
+  line-height: 0.95;
+}
+
+.field-notes__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(2rem, 5vw, 5.25rem);
+}
+
+.field-notes__figure {
+  margin: 0;
+  border: 1px solid var(--notes-line);
+  background: #161715;
+}
+
+.field-notes__figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.field-notes__measurements {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0;
+  border-top: 1px solid var(--notes-line);
+  border-bottom: 1px solid var(--notes-line);
+}
+
+.field-notes__measurements > div {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  gap: 0.35rem;
+  padding: clamp(0.75rem, 2vw, 1.35rem);
+}
+
+.field-notes__measurements > div + div {
+  border-left: 1px solid var(--notes-line);
+}
+
+.field-notes__measurements dt,
+.field-notes__caption p,
+.field-notes__topic {
+  color: var(--notes-muted);
+  font-family: var(--mono, "IBM Plex Mono", monospace);
+  font-size: 0.72rem;
+  line-height: 1.55;
+}
+
+.field-notes__measurements dd {
+  margin: 0;
+  font-family: var(--mono, "IBM Plex Mono", monospace);
+  font-size: clamp(1.2rem, 2.65vw, 2rem);
+  font-weight: 500;
+  letter-spacing: -0.075em;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+.field-notes__measurements dd span {
+  color: var(--notes-accent);
+  font-size: 0.65em;
+  letter-spacing: 0;
+}
+
+.field-notes__caption p {
+  margin: 0;
+  padding: 0.7rem clamp(0.75rem, 2vw, 1.35rem);
+}
+
+.field-notes__caption a,
+.field-notes__body a {
+  color: var(--notes-ink);
+  text-decoration: underline;
+  text-decoration-color: #8e8b80;
+  text-underline-offset: 0.2em;
+}
+
+.field-notes__article {
+  padding: clamp(1.15rem, 2vw, 1.6rem) 0 0.5rem;
+  border-top: 1px solid var(--notes-line);
+}
+
+.field-notes__article:last-child {
+  border-bottom: 1px solid var(--notes-line);
+}
+
+.field-notes__topic {
+  margin: 0 0 0.7rem;
+  color: var(--notes-accent);
+  letter-spacing: 0.095em;
+  text-transform: uppercase;
+}
+
+.field-notes__article h3 {
+  margin: 0;
+  font-family: var(--sans, "Instrument Sans", sans-serif);
+  font-size: clamp(1.78rem, 3vw, 2.85rem);
+  font-weight: 550;
+  letter-spacing: -0.055em;
+  line-height: 1.04;
+}
+
+.field-notes__dek,
+.field-notes__body {
+  color: var(--notes-muted);
+  font-family: var(--sans, "Instrument Sans", sans-serif);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.field-notes__dek {
+  max-width: 36ch;
+  margin: 0.65rem 0 0.5rem;
+}
+
+.field-notes__disclosure summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 44px;
+  list-style: none;
+  color: var(--notes-ink);
+  font-family: var(--mono, "IBM Plex Mono", monospace);
+  font-size: 0.76rem;
+  cursor: pointer;
+}
+
+.field-notes__disclosure summary::-webkit-details-marker {
+  display: none;
+}
+
+.field-notes__close,
+.field-notes__disclosure[open] .field-notes__read {
+  display: none;
+}
+
+.field-notes__disclosure[open] .field-notes__close {
+  display: inline;
+}
+
+.field-notes__toggle {
+  display: grid;
+  place-items: center;
+  width: 1.85rem;
+  height: 1.85rem;
+  border: 1px solid var(--notes-line);
+}
+
+.field-notes__toggle::before,
+.field-notes__toggle::after {
+  content: "";
+  grid-area: 1 / 1;
+  width: 0.68rem;
+  height: 1px;
+  background: currentColor;
+}
+
+.field-notes__toggle::after {
+  transform: rotate(90deg);
+}
+
+.field-notes__disclosure[open] .field-notes__toggle::after {
+  display: none;
+}
+
+.field-notes a:hover,
+.field-notes__disclosure summary:hover {
+  color: var(--notes-accent);
+}
+
+.field-notes :is(a, summary):focus-visible {
+  outline: 2px solid var(--notes-accent);
+  outline-offset: 3px;
+}
+
+.field-notes__body {
+  padding: 0.15rem 0 0.85rem;
+}
+
+.field-notes__body p {
+  margin: 0.65rem 0 0;
+}
+
+.field-notes__body p + p {
+  margin-top: 0.9rem;
+}
+
+.field-notes__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (max-width: 740px) {
+  .field-notes__layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
