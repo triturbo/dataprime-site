@@ -42,6 +42,11 @@
   margin-top: clamp(26px, 4vw, 46px);
 }
 
+.contact-address-text {
+  color: var(--contact-accent);
+  font-size: clamp(20px, 3vw, 40px);
+}
+
 .email-link {
   display: inline-block;
   max-width: 100%;
