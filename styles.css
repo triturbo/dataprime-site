@@ -322,6 +322,25 @@ p {
   align-items: center;
   color: #b5b5ae;
 }
+.scan-cue {
+  display: none;
+}
+.hero[data-optical-scan="ready"]
+  .study:has(.assembly-view:not([hidden]))
+  .study-name {
+  display: none;
+}
+.hero[data-optical-phase="start"]
+  .study:has(.assembly-view:not([hidden]))
+  .cue-start,
+.hero[data-optical-phase="scanning"]
+  .study:has(.assembly-view:not([hidden]))
+  .cue-scanning,
+.hero[data-optical-phase="complete"]
+  .study:has(.assembly-view:not([hidden]))
+  .cue-complete {
+  display: inline;
+}
 .specimen-glyph {
   width: 17px;
   height: 17px;
@@ -491,7 +510,7 @@ p {
     width: 1.6rem;
   }
   .primary-nav {
-    gap: 1.1rem;
+    gap: clamp(0.8rem, 3.35vw, 1.1rem);
     font-size: 0.85rem;
   }
   .primary-nav .contact-link {
@@ -577,19 +596,44 @@ p {
     gap: 1rem;
   }
 }
+@media (min-width: 381px) and (max-width: 440px) {
+  .wordmark {
+    font-size: 1.2rem;
+  }
+  .wordmark img {
+    width: 1.35rem;
+  }
+  .primary-nav {
+    font-size: 0.8rem;
+    gap: 0.75rem;
+    white-space: nowrap;
+  }
+  .primary-nav .contact-link {
+    padding-inline: 0.7rem;
+  }
+}
 @media (max-width: 380px) {
   :root {
     --gutter: 1rem;
   }
+  .nav-row {
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
+    padding-block: 0.9rem 0.55rem;
+  }
   .wordmark {
-    font-size: 1.18rem;
+    justify-self: start;
+    font-size: 1.35rem;
   }
   .wordmark img {
     width: 1.32rem;
   }
   .primary-nav {
-    gap: 0.68rem;
-    font-size: 0.77rem;
+    justify-content: space-between;
+    gap: 0.8rem;
+    font-size: 0.85rem;
     white-space: nowrap;
   }
   .primary-nav .contact-link {
@@ -620,12 +664,5 @@ p {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-  }
-}
-
-@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .assembly-view img {
-    transform: scale(1.025) translate(var(--study-x, 0%), var(--study-y, 0%));
-    transition: transform 0.45s ease-out;
   }
 }

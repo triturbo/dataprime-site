@@ -52,5 +52,33 @@ if (practice) {
 
     selectPracticeStage(0);
     tabList.hidden = false;
+
+    const sellSize = practice.querySelector("#queue-sell");
+    const sellReadout = practice.querySelector("[data-queue-sell]");
+    const filledReadout = practice.querySelector("[data-queue-filled]");
+    const restingReadout = practice.querySelector("[data-queue-resting]");
+    const queue = [...practice.querySelectorAll("[data-queue-units]")];
+    const [ahead, ours] = queue.map((segment) => Number(segment.dataset.queueUnits));
+
+    function updateQueue() {
+      const sell = sellSize.valueAsNumber;
+      const filled = Math.min(ours, Math.max(0, sell - ahead));
+      sellSize.setAttribute("aria-valuetext", `${sell} units`);
+      sellReadout.textContent = sell;
+      filledReadout.textContent = filled;
+      restingReadout.textContent = ours - filled;
+
+      let remaining = sell;
+      for (const segment of queue) {
+        const units = Number(segment.dataset.queueUnits);
+        const executed = Math.min(units, remaining);
+        segment.style.setProperty("--queue-fill", `${(executed / units) * 100}%`);
+        remaining -= executed;
+      }
+    }
+
+    sellSize.addEventListener("input", updateQueue);
+    updateQueue();
+    sellSize.hidden = false;
   }
 }

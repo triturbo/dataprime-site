@@ -17,26 +17,6 @@ viewControls.addEventListener("click", (event) => {
 });
 viewControls.hidden = false;
 
-const inspectionMotion = window.matchMedia(
-  "(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)",
-);
-study.addEventListener("pointermove", (event) => {
-  if (!inspectionMotion.matches || assembly.hidden) return;
-  const bounds = study.getBoundingClientRect();
-  study.style.setProperty(
-    "--study-x",
-    `${(0.5 - (event.clientX - bounds.left) / bounds.width) * 2}%`,
-  );
-  study.style.setProperty(
-    "--study-y",
-    `${(0.5 - (event.clientY - bounds.top) / bounds.height) * 2}%`,
-  );
-});
-study.addEventListener("pointerleave", () => {
-  study.style.removeProperty("--study-x");
-  study.style.removeProperty("--study-y");
-});
-
 const marketClocks = [...document.querySelectorAll("time[data-zone]")].map(
   (element) => ({
     element,

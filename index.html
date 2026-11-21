@@ -3,23 +3,23 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Dataprime — Trading infrastructure consultancy</title>
+    <title>Dataprime — Electronic trading &amp; infrastructure</title>
     <meta
       name="description"
-      content="Independent engineering and advisory for trading firms. Dataprime works on market data, execution, risk controls and production trading systems."
+      content="Dataprime studies market microstructure, execution and risk, and builds the systems behind electronic trading."
     />
     <meta name="theme-color" content="#101111" />
     <link rel="canonical" href="https://dataprime.dev/" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Dataprime — Inside the critical path" />
+    <meta property="og:title" content="Dataprime — At the touch" />
     <meta
       property="og:description"
-      content="Independent trading infrastructure consultancy. Market data, pre-trade risk, execution and production engineering."
+      content="Queue position, fill quality and the systems between a trading decision and the venue."
     />
     <meta property="og:url" content="https://dataprime.dev/" />
     <meta
       property="og:image"
-      content="https://dataprime.dev/assets/optical-study.jpg"
+      content="https://dataprime.dev/assets/photonic-study.jpg"
     />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
@@ -31,9 +31,11 @@
       crossorigin
     />
     <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/optical-scan.css" />
     <link rel="stylesheet" href="/practice.css" />
     <link rel="stylesheet" href="/notes.css" />
     <script src="/script.js" defer></script>
+    <script src="/optical-scan.js" defer></script>
     <script src="/practice.js" defer></script>
   </head>
   <body id="top">
@@ -49,7 +51,7 @@
           />Dataprime</a
         >
         <nav class="primary-nav" aria-label="Main navigation">
-          <a href="#practice">Practice</a><a href="#notes">Field notes</a
+          <a href="#practice">Expertise</a><a href="#notes">Field notes</a
           ><a class="contact-link" href="/contact/">Contact</a>
         </nav>
       </div>
@@ -61,25 +63,23 @@
             <p class="kicker">
               <span class="signal-icon" aria-hidden="true"
                 ><i></i><i></i><i></i><i></i><i></i></span
-              >Trading infrastructure consultancy
+              >Electronic trading &amp; infrastructure
             </p>
             <h1 id="hero-title">
-              Inside the<br /><span
-                >critical path<span class="stop">.</span></span
-              >
+              At the<br /><span>touch<span class="stop">.</span></span>
             </h1>
             <p class="hero-lead">
-              We design and tune the systems between a market update and an
-              executed order. Independent engineering and advisory for trading
-              firms.
+              We study what a place in the queue is worth, when to pull a quote
+              and where a fill leaves us. That’s the starting point for the
+              trading systems we build.
             </p>
             <a class="practice-link" href="#practice"
               ><span class="link-symbol" aria-hidden="true"
                 ><i></i><i></i><i></i></span
-              >Explore the practice</a
+              >Explore our work</a
             >
           </div>
-          <figure class="study" aria-label="Optical fibre study">
+          <figure class="study" aria-label="Photonic cable study">
             <span class="registration reg-start" aria-hidden="true"></span
             ><span class="registration reg-end" aria-hidden="true"></span>
             <div class="study-viewport">
@@ -87,14 +87,14 @@
                 <source
                   type="image/webp"
                   srcset="
-                    /assets/optical-800.webp   800w,
-                    /assets/optical-1536.webp 1536w
+                    /assets/photonic-800.webp   800w,
+                    /assets/photonic-1536.webp 1536w
                   "
                   sizes="(max-width: 760px) 100vw, 65vw"
                 />
                 <img
-                  src="/assets/optical-study.jpg"
-                  alt="Cutaway study of an optical cable, its dark machined sleeve opening into a fan of orange glass fibres."
+                  src="/assets/photonic-study.jpg"
+                  alt="Concept study of a photonic cable. Amber light traces run beneath its slotted titanium collar and out into a fan of glass fibres."
                   width="1536"
                   height="1024"
                   fetchpriority="high"
@@ -110,10 +110,13 @@
               />
             </div>
             <figcaption class="study-caption">
-              <span class="study-title"
-                ><span class="specimen-glyph" aria-hidden="true"></span>Optical
-                fibre study</span
-              >
+              <span class="study-title">
+                <span class="specimen-glyph" aria-hidden="true"></span>
+                <span class="study-name">Photonic cable study</span>
+                <span class="scan-cue cue-start">Scroll to scan</span>
+                <span class="scan-cue cue-scanning">Optical scan</span>
+                <span class="scan-cue cue-complete">Binary study</span>
+              </span>
               <div
                 class="view-controls"
                 role="group"
@@ -170,12 +173,13 @@
         <div class="wrap">
           <header class="practice-header">
             <div>
-              <p class="practice-eyebrow">The practice</p>
+              <p class="practice-eyebrow">Our expertise</p>
               <h2 id="practice-heading">From tick to trade.</h2>
             </div>
             <p class="practice-intro">
-              We join trading desks and engineering teams for architecture
-              reviews, hands-on builds and production investigations.
+              At a given price, queue position helps determine what gets filled.
+              Market data, execution and risk controls each need a consistent
+              view of what happened.
             </p>
           </header>
 
@@ -183,15 +187,26 @@
             <div
               class="practice-tabs"
               role="tablist"
-              aria-label="Trading infrastructure practice"
+              aria-label="Trading path"
               hidden
             >
               <button
                 type="button"
                 role="tab"
+                id="practice-tab-order-flow"
+                aria-controls="practice-panel-order-flow"
+                aria-selected="true"
+                data-practice-stage="order-flow"
+              >
+                Order flow
+              </button>
+              <button
+                type="button"
+                role="tab"
                 id="practice-tab-data"
                 aria-controls="practice-panel-data"
-                aria-selected="true"
+                aria-selected="false"
+                tabindex="-1"
                 data-practice-stage="data"
               >
                 Market data
@@ -235,22 +250,51 @@
               <div class="practice-panels">
                 <article
                   class="practice-panel"
+                  id="practice-panel-order-flow"
+                  aria-labelledby="practice-title-order-flow"
+                >
+                  <h3 id="practice-title-order-flow">
+                    Who gets the next fill?
+                  </h3>
+                  <p id="practice-queue-assumptions">
+                    At this hypothetical 100.00 bid, 80 units arrived ahead of
+                    our 30. The oldest orders fill first at this level. There
+                    are no cancels.
+                  </p>
+                  <div class="queue-input">
+                    <label for="queue-sell">Incoming sell size</label>
+                    <span><strong data-queue-sell>100</strong> units</span>
+                    <input
+                      id="queue-sell"
+                      type="range"
+                      min="0"
+                      max="160"
+                      value="100"
+                      aria-describedby="practice-queue-assumptions"
+                      hidden
+                    />
+                  </div>
+                  <div class="queue-result" role="status">
+                    <span>Our order</span>
+                    <span><strong data-queue-filled>20</strong> filled</span>
+                    <span><strong data-queue-resting>10</strong> resting</span>
+                  </div>
+                </article>
+                <article
+                  class="practice-panel"
                   id="practice-panel-data"
                   aria-labelledby="practice-title-data"
                 >
-                  <h3 id="practice-title-data">Make the book trustworthy.</h3>
+                  <h3 id="practice-title-data">Is the book usable?</h3>
                   <p>
-                    We build feed handlers and order books that keep sequence
-                    gaps, venue quirks and stale data from leaking into trading
-                    decisions.
+                    Ticks can keep arriving after a sequence gap. Rebuild the
+                    book from a snapshot and apply buffered updates in order
+                    before pricing off it again.
                   </p>
-                  <ul
-                    class="practice-topics"
-                    aria-label="Market data capabilities"
-                  >
-                    <li>Feed handlers</li>
-                    <li>Book reconstruction</li>
-                    <li>Gap recovery</li>
+                  <ul class="practice-topics" aria-label="Market data topics">
+                    <li>Sequence gaps</li>
+                    <li>Snapshot recovery</li>
+                    <li>Book validity</li>
                   </ul>
                 </article>
                 <article
@@ -259,19 +303,16 @@
                   aria-labelledby="practice-title-execution"
                 >
                   <h3 id="practice-title-execution">
-                    Keep order state unambiguous.
+                    What’s working at the venue?
                   </h3>
                   <p>
-                    We design order gateways and lifecycle logic that reconcile
-                    working orders, cancels and fills, including after a broken
-                    session.
+                    A fill can arrive while a cancel is pending. After a
+                    reconnect, reconcile the venue’s fills and open orders
+                    before treating local order state as current.
                   </p>
-                  <ul
-                    class="practice-topics"
-                    aria-label="Execution capabilities"
-                  >
-                    <li>Venue connectivity</li>
+                  <ul class="practice-topics" aria-label="Execution topics">
                     <li>Order state</li>
+                    <li>Drop copy</li>
                     <li>Session recovery</li>
                   </ul>
                 </article>
@@ -280,18 +321,16 @@
                   id="practice-panel-risk"
                   aria-labelledby="practice-title-risk"
                 >
-                  <h3 id="practice-title-risk">
-                    Check risk before orders leave.
-                  </h3>
+                  <h3 id="practice-title-risk">How much exposure remains?</h3>
                   <p>
-                    We put exposure limits and order validation in the
-                    submission path, with explicit behaviour for stale inputs,
-                    rejects and trading halts.
+                    A partial fill changes the position while the remainder can
+                    still trade. Pre-trade limits need to account for both,
+                    including orders with cancels still pending.
                   </p>
-                  <ul class="practice-topics" aria-label="Risk capabilities">
+                  <ul class="practice-topics" aria-label="Risk topics">
                     <li>Pre-trade controls</li>
-                    <li>Exposure limits</li>
-                    <li>Kill switches</li>
+                    <li>Working exposure</li>
+                    <li>Position limits</li>
                   </ul>
                 </article>
                 <article
@@ -300,115 +339,140 @@
                   aria-labelledby="practice-title-production"
                 >
                   <h3 id="practice-title-production">
-                    Make failures reproducible.
+                    Can we replay the decision?
                   </h3>
                   <p>
-                    We trace latency across the trading path and use event
-                    replay to reconstruct failures, test recovery and build
-                    practical runbooks.
+                    Replay the inputs with the code and configuration that ran
+                    at the time. Follow the decision through the risk check,
+                    outbound order and venue response.
                   </p>
-                  <ul
-                    class="practice-topics"
-                    aria-label="Production capabilities"
-                  >
-                    <li>Latency profiling</li>
-                    <li>Event replay</li>
-                    <li>Operational runbooks</li>
+                  <ul class="practice-topics" aria-label="Production topics">
+                    <li>Event capture</li>
+                    <li>Versioned configuration</li>
+                    <li>Deterministic replay</li>
                   </ul>
                 </article>
               </div>
 
-              <figure class="practice-figure">
-                <figcaption>Illustrative trading path</figcaption>
-                <svg
-                  class="practice-schematic"
-                  viewBox="0 0 638 300"
-                  role="img"
-                  aria-labelledby="practice-diagram-title practice-diagram-description"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <title id="practice-diagram-title">
-                    An electronic trading path
-                  </title>
-                  <desc id="practice-diagram-description">
-                    Market feeds update the order book, which a strategy uses to
-                    generate orders. A pre-trade risk check gates orders on the
-                    way to the venue. Venue acknowledgements and fills return to
-                    the strategy's order management. Production telemetry and
-                    replay span the path.
-                  </desc>
-                  <defs>
-                    <pattern
-                      id="practice-grid"
-                      width="20"
-                      height="20"
-                      patternUnits="userSpaceOnUse"
+              <div class="practice-visuals">
+                <figure class="practice-figure queue-figure">
+                  <figcaption>Price–time queue · Bid 100.00</figcaption>
+                  <div class="queue-board">
+                    <ol
+                      class="queue-depth"
+                      aria-label="Starting queue in fill order"
                     >
-                      <path d="M 20 0 H 0 V 20" />
-                    </pattern>
-                  </defs>
+                      <li data-queue-units="80">
+                        <strong>80</strong><span>Ahead</span>
+                      </li>
+                      <li data-queue-units="30">
+                        <strong>30</strong><span>Ours</span>
+                      </li>
+                      <li data-queue-units="50">
+                        <strong>50</strong><span>Behind</span>
+                      </li>
+                    </ol>
+                  </div>
+                  <div class="queue-key" aria-hidden="true">
+                    <span>Executed</span><span>Resting</span>
+                  </div>
+                </figure>
+                <figure class="practice-figure practice-route-figure">
+                  <figcaption>Illustrative trading path</figcaption>
+                  <svg
+                    class="practice-schematic"
+                    viewBox="0 0 638 300"
+                    role="img"
+                    aria-labelledby="practice-diagram-title practice-diagram-description"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <title id="practice-diagram-title">
+                      An electronic trading path
+                    </title>
+                    <desc id="practice-diagram-description">
+                      Market feeds update the order book, which a strategy uses
+                      to generate orders. A pre-trade risk check gates orders on
+                      the way to the venue. Venue acknowledgements and fills
+                      return to the strategy's order management. Production
+                      telemetry and replay span the path.
+                    </desc>
+                    <defs>
+                      <pattern
+                        id="practice-grid"
+                        width="20"
+                        height="20"
+                        patternUnits="userSpaceOnUse"
+                      >
+                        <path d="M 20 0 H 0 V 20" />
+                      </pattern>
+                    </defs>
 
-                  <path class="practice-grid" d="M0 0H638V300H0Z" />
-                  <path
-                    class="practice-field-guides"
-                    d="M1 70V1h72 M565 1h72v69 M637 229v70h-72 M73 299H1v-70"
-                  />
-
-                  <g class="practice-route practice-path-production">
+                    <path class="practice-grid" d="M0 0H638V300H0Z" />
                     <path
-                      d="M76 165 V258 H202 M236 165 V232 M398 165 V232 M558 203 V258 H438"
+                      class="practice-field-guides"
+                      d="M1 70V1h72 M565 1h72v69 M637 229v70h-72 M73 299H1v-70"
                     />
-                    <circle cx="76" cy="258" r="3" />
-                    <circle cx="558" cy="258" r="3" />
-                  </g>
-                  <g
-                    class="practice-route practice-path-execution practice-reply"
-                  >
-                    <path d="M558 165 V202 H312 V78 M308 84 L312 78 L316 84" />
-                    <text x="459" y="194" text-anchor="middle">ACK / FILL</text>
-                  </g>
-                  <g class="practice-route practice-path-data">
-                    <path
-                      d="M132 137 H174 M168 133 L174 137 L168 141 M236 109 V54 H274 M268 50 L274 54 L268 58"
-                    />
-                  </g>
-                  <g class="practice-route practice-path-risk">
-                    <path d="M397 54 H426 V110 M422 104 L426 110 L430 104" />
-                  </g>
-                  <g
-                    class="practice-route practice-path-execution practice-path-risk"
-                  >
-                    <path d="M460 137 H500 M494 133 L500 137 L494 141" />
-                  </g>
 
-                  <g class="practice-node practice-path-data">
-                    <rect x="20" y="110" width="112" height="54" />
-                    <text x="76" y="138">Feed</text>
-                  </g>
-                  <g class="practice-node practice-path-data">
-                    <rect x="174" y="110" width="124" height="54" />
-                    <text x="236" y="138">Order book</text>
-                  </g>
-                  <g
-                    class="practice-node practice-path-data practice-path-execution practice-path-risk"
-                  >
-                    <rect x="274" y="31" width="123" height="46" />
-                    <text x="335.5" y="55">Strategy</text>
-                  </g>
-                  <g class="practice-node practice-path-risk">
-                    <rect x="336" y="110" width="124" height="54" />
-                    <text x="398" y="138">Risk check</text>
-                  </g>
-                  <g class="practice-node practice-path-execution">
-                    <rect x="500" y="110" width="116" height="54" />
-                    <text x="558" y="138">Venue</text>
-                  </g>
-                  <g class="practice-node practice-path-production">
-                    <rect x="202" y="232" width="236" height="51" />
-                    <text x="320" y="258">Telemetry / replay</text>
-                  </g>
-                </svg>
-              </figure>
+                    <g class="practice-route practice-path-production">
+                      <path
+                        d="M76 165 V258 H202 M236 165 V232 M398 165 V232 M558 203 V258 H438"
+                      />
+                      <circle cx="76" cy="258" r="3" />
+                      <circle cx="558" cy="258" r="3" />
+                    </g>
+                    <g
+                      class="practice-route practice-path-execution practice-reply"
+                    >
+                      <path
+                        d="M558 165 V202 H312 V78 M308 84 L312 78 L316 84"
+                      />
+                      <text x="459" y="194" text-anchor="middle">
+                        ACK / FILL
+                      </text>
+                    </g>
+                    <g class="practice-route practice-path-data">
+                      <path
+                        d="M132 137 H174 M168 133 L174 137 L168 141 M236 109 V54 H274 M268 50 L274 54 L268 58"
+                      />
+                    </g>
+                    <g class="practice-route practice-path-risk">
+                      <path d="M397 54 H426 V110 M422 104 L426 110 L430 104" />
+                    </g>
+                    <g
+                      class="practice-route practice-path-execution practice-path-risk"
+                    >
+                      <path d="M460 137 H500 M494 133 L500 137 L494 141" />
+                    </g>
+
+                    <g class="practice-node practice-path-data">
+                      <rect x="20" y="110" width="112" height="54" />
+                      <text x="76" y="138">Feed</text>
+                    </g>
+                    <g class="practice-node practice-path-data">
+                      <rect x="174" y="110" width="124" height="54" />
+                      <text x="236" y="138">Order book</text>
+                    </g>
+                    <g
+                      class="practice-node practice-path-data practice-path-execution practice-path-risk"
+                    >
+                      <rect x="274" y="31" width="123" height="46" />
+                      <text x="335.5" y="55">Strategy</text>
+                    </g>
+                    <g class="practice-node practice-path-risk">
+                      <rect x="336" y="110" width="124" height="54" />
+                      <text x="398" y="138">Risk check</text>
+                    </g>
+                    <g class="practice-node practice-path-execution">
+                      <rect x="500" y="110" width="116" height="54" />
+                      <text x="558" y="138">Venue</text>
+                    </g>
+                    <g class="practice-node practice-path-production">
+                      <rect x="202" y="232" width="236" height="51" />
+                      <text x="320" y="258">Telemetry / replay</text>
+                    </g>
+                  </svg>
+                </figure>
+              </div>
             </div>
           </div>
         </div>
@@ -457,47 +521,90 @@
             <div class="field-notes__articles">
               <article
                 class="field-notes__article"
-                aria-labelledby="note-distance"
+                aria-labelledby="note-markout"
               >
-                <p class="field-notes__topic">Network architecture</p>
-                <h3 id="note-distance">Distance sets the floor</h3>
+                <p class="field-notes__topic">Trading research</p>
+                <h3 id="note-markout">Reading a fill</h3>
                 <p class="field-notes__dek">
-                  Start with the propagation budget before tuning the code on
-                  either end.
+                  Fill rate measures how often quotes trade. A markout values
+                  the fill against a later midpoint.
                 </p>
                 <details class="field-notes__disclosure">
                   <summary>
                     <span class="field-notes__read">Read note</span>
                     <span class="field-notes__close">Close note</span>
                     <span class="field-notes__sr-only">
-                      on the latency floor</span
+                      on interpreting fills</span
                     >
                     <span class="field-notes__toggle" aria-hidden="true"></span>
                   </summary>
                   <div class="field-notes__body">
                     <p>
+                      Suppose a passive bid fills at 100.00 and the midpoint is
+                      99.98 one second later. For the buyer, the later midpoint
+                      less the fill price gives a signed markout of −0.02 per
+                      unit before fees or rebates.
+                    </p>
+                    <p>
+                      A single negative markout can reflect ordinary price
+                      noise. If it recurs across fills at similar spreads and
+                      volatility, the pattern can point to adverse selection.
+                      Compare several horizons to see whether the move persists.
+                    </p>
+                    <p>
+                      Read markouts alongside fill rate and the urgency of the
+                      order. A desk that needs to complete an order promptly may
+                      accept a different trade-off from one that can wait.
+                      <a
+                        href="https://www.nasdaq.com/articles/what-markouts-are-and-why-they-dont-always-matter-2020-07-23"
+                        >Nasdaq’s discussion of markouts</a
+                      >.
+                    </p>
+                  </div>
+                </details>
+              </article>
+
+              <article
+                class="field-notes__article"
+                aria-labelledby="note-distance"
+              >
+                <p class="field-notes__topic">Execution</p>
+                <h3 id="note-distance">While the quote is live</h3>
+                <p class="field-notes__dek">
+                  A resting quote can fill at the old price after the reference
+                  market has moved.
+                </p>
+                <details class="field-notes__disclosure">
+                  <summary>
+                    <span class="field-notes__read">Read note</span>
+                    <span class="field-notes__close">Close note</span>
+                    <span class="field-notes__sr-only"> on quote lifetime</span>
+                    <span class="field-notes__toggle" aria-hidden="true"></span>
+                  </summary>
+                  <div class="field-notes__body">
+                    <p>
+                      A cancel in flight leaves the remaining size exposed.
+                      Trace the time from the reference price move through feed
+                      receipt and the pricing decision to the event that removes
+                      or replaces the quote at the venue. Include any fills
+                      along the way.
+                    </p>
+                    <p>
                       New York and London are about 5,570 km apart along a great
                       circle. At a rounded 200,000 km/s in glass, a fibre that
                       followed that line would take about 28 ms to carry a
-                      signal one way. Installed cable length, equipment and
-                      queueing add to that illustrative budget.
-                    </p>
-                    <p>
-                      For an order path, trace the elapsed time from market-data
-                      arrival to the order leaving the gateway. Timestamp feed
-                      ingress, book update, decision and send. Compare spans on
-                      the same clock where possible. Across hosts, measure clock
-                      offset and include the uncertainty in the result.
-                    </p>
-                    <p>
-                      A tail that grows in bursts points to a different
-                      investigation than a steady offset. Break down queue time
-                      and processing time under representative load before
-                      deciding where to optimise.
+                      signal one way. Installed fibre can follow a longer path.
+                      Equipment and queueing add their own delays.
                       <a
                         href="https://www.corning.com/media/worldwide/coc/documents/Fiber/white-paper/WP8080_03-11.pdf"
                         >Corning’s optical propagation analysis</a
                       >.
+                    </p>
+                    <p>
+                      Break the local part of that timeline into queueing and
+                      processing. Across systems, account for clock offset and
+                      report the uncertainty. It determines how confidently the
+                      desk can place a fill before or after the price move.
                     </p>
                   </div>
                 </details>
@@ -507,8 +614,8 @@
                 <p class="field-notes__topic">Market data</p>
                 <h3 id="note-feed">When a feed falls silent</h3>
                 <p class="field-notes__dek">
-                  Define what counts as a usable book during a quiet market, a
-                  sequence gap and a replay.
+                  The screen can still show a best price after a sequence gap.
+                  That price may have been cancelled or traded away.
                 </p>
                 <details class="field-notes__disclosure">
                   <summary>
@@ -521,29 +628,27 @@
                   </summary>
                   <div class="field-notes__body">
                     <p>
-                      During a quiet market, track transport liveness and book
-                      completeness separately. Track the next expected sequence
-                      number for each feed session. On MoldUDP64, the heartbeat
-                      carries that sequence, so a receiver can detect a missing
-                      message between market updates.
+                      Track the next expected sequence number for each feed
+                      session. A MoldUDP64 heartbeat carries the sender’s next
+                      sequence number, so it can reveal a missed update during a
+                      quiet market.
                       <a
                         href="https://www.nasdaqtrader.com/content/technicalsupport/specifications/dataproducts/moldudp64.pdf"
                         >Nasdaq’s MoldUDP64 specification</a
                       >.
                     </p>
                     <p>
-                      When a gap appears, mark the affected books as recovering
-                      and tell downstream consumers which decisions can proceed.
-                      Buffer live updates during replay. If the missing range
-                      has aged out and the venue supports sequenced snapshots,
-                      rebuild at the snapshot boundary and apply the contiguous
-                      updates that follow it.
+                      When a gap appears, pass the recovering state to pricing
+                      and risk checks that depend on the affected books. Track
+                      working orders separately through venue acknowledgements
+                      and execution reports.
                     </p>
                     <p>
-                      Set the return-to-live test in advance. Require a
-                      contiguous sequence and a backlog within the freshness
-                      budget. Record the gap range, the recovery source and the
-                      time until the book was usable again.
+                      Buffer live updates during replay. If recovery needs a
+                      sequenced snapshot, apply the contiguous updates after its
+                      boundary. The book is usable again once the sequence is
+                      complete and the backlog is within the desk’s freshness
+                      budget.
                     </p>
                   </div>
                 </details>

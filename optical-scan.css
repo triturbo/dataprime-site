@@ -1,0 +1,108 @@
+.optical-scan-stack {
+  --scan-object-position: 51% 51%;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  mix-blend-mode: lighten;
+  mask-image:
+    linear-gradient(90deg, transparent, #000 13%, #000 98%),
+    linear-gradient(180deg, transparent, #000 9%, #000 84%, transparent);
+  mask-composite: intersect;
+}
+
+.optical-scan-stack:has(.assembly-view[hidden]) {
+  display: none;
+}
+
+.optical-scan-stack .assembly-view {
+  mix-blend-mode: normal;
+  mask-image: none;
+}
+
+.optical-scan-stack .assembly-view img {
+  object-position: var(--scan-object-position);
+  transform: none;
+}
+
+.optical-scan-plate,
+.optical-scan-boundary {
+  position: absolute;
+  display: none;
+  pointer-events: none;
+}
+
+.hero:is([data-optical-phase="scanning"], [data-optical-phase="complete"]) .optical-scan-plate {
+  --scan-edge: var(--scan-front, -9%);
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--scan-object-position);
+  clip-path: polygon(0 0, calc(var(--scan-edge) + 8%) 0, calc(var(--scan-edge) - 8%) 100%, 0 100%);
+}
+
+.hero[data-optical-phase="scanning"] .optical-scan-binary {
+  --scan-edge: calc(var(--scan-front, -9%) - 6%);
+}
+
+.hero[data-optical-phase="complete"] .optical-scan-plate {
+  clip-path: none;
+}
+
+.hero[data-optical-phase="scanning"] .optical-scan-boundary {
+  top: 0;
+  left: calc(var(--scan-front, -9%) - 8%);
+  display: block;
+  width: 16%;
+  height: 100%;
+  overflow: visible;
+  opacity: var(--scan-beam, 0);
+  stroke: #ffc196;
+  stroke-width: 0.75;
+}
+
+/* Wider screens briefly pin the hero. Portrait uses its native scroll space. */
+@media (min-width: 761px) and (prefers-reduced-motion: no-preference) {
+  .hero[data-optical-scan] {
+    overflow: clip;
+  }
+
+  .hero[data-optical-scan]::after {
+    display: block;
+    height: clamp(8rem, 28svh, 19rem);
+    content: "";
+  }
+
+  .hero[data-optical-scan] .hero-grid {
+    position: sticky;
+    top: clamp(-8rem, calc(100svh - clamp(32rem, 42vw, 45rem)), 3.25rem);
+  }
+
+  .hero[data-optical-section-flow] {
+    padding-top: var(--scan-section-offset, 0px);
+  }
+
+  .hero[data-optical-section-flow]::after {
+    display: none;
+  }
+
+  .hero[data-optical-section-flow] .hero-grid {
+    position: relative;
+    top: auto;
+  }
+}
+
+@media (max-width: 760px) {
+  .optical-scan-stack {
+    --scan-object-position: center 54%;
+    mask-image: linear-gradient(180deg, transparent, #000 12%, #000 78%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero .optical-scan-stack .optical-scan-plate,
+  .hero .optical-scan-stack .optical-scan-boundary {
+    display: none;
+  }
+}
