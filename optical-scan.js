@@ -8,25 +8,14 @@
   const motion = matchMedia("(prefers-reduced-motion: reduce)");
   const compact = matchMedia("(max-width: 760px)");
   const stack = document.createElement("div");
-  const svgNamespace = "http://www.w3.org/2000/svg";
-  const scanner = document.createElementNS(svgNamespace, "svg");
-  const line = document.createElementNS(svgNamespace, "line");
   stack.className = "optical-scan-stack";
-  scanner.classList.add("optical-scan-boundary");
-  scanner.setAttribute("aria-hidden", "true");
-  scanner.setAttribute("viewBox", "0 0 100 100");
-  scanner.setAttribute("preserveAspectRatio", "none");
-  line.setAttribute("x1", "100");
-  line.setAttribute("y2", "100");
-  line.setAttribute("vector-effect", "non-scaling-stroke");
-  scanner.append(line);
 
   const cache = new Map();
   const clamp = (value) => Math.max(0, Math.min(1, value));
   let active;
   let geometry;
   let frame = 0;
-  let lastPosition;
+  let lastProgress;
   let releasedAt;
 
   function loadPlate(name, variant) {
@@ -60,7 +49,7 @@
       const plates = await cache.get(variant);
       if (motion.matches || variant !== (compact.matches ? "mobile" : "desktop")) return;
       if (!stack.isConnected) picture.before(stack);
-      stack.replaceChildren(picture, ...plates, scanner);
+      stack.replaceChildren(picture, ...plates);
       active = variant;
       hero.dataset.opticalScan = "ready";
       if (compact.matches) restorePin();
@@ -77,14 +66,14 @@
     let end;
     if (compact.matches) {
       const artTop = scrollY + study.getBoundingClientRect().top;
-      start = Math.max(18, artTop - innerHeight * 0.58);
-      end = Math.max(start + 90, artTop - innerHeight * 0.115);
+      start = Math.max(0, artTop + study.offsetHeight * 0.45 - innerHeight);
+      end = Math.max(start + 1, artTop);
     } else {
       const top = scrollY + hero.getBoundingClientRect().top;
       const pinnedAt = top - (parseFloat(getComputedStyle(grid).top) || 0);
       const runway = hero.offsetHeight - grid.offsetHeight;
-      start = Math.max(14, pinnedAt - innerHeight * 0.065);
-      end = Math.max(start + 90, pinnedAt + runway * 0.89);
+      start = Math.max(0, top - innerHeight * 0.15);
+      end = Math.max(start + 1, pinnedAt + runway);
     }
     geometry = { start, distance: end - start };
     schedule();
@@ -98,12 +87,12 @@
       measure();
     }
     const progress = clamp((scrollY - geometry.start) / geometry.distance);
-    const position = Math.round((-9 + 124 * progress) * 100) / 100;
-    if (position === lastPosition && hero.dataset.opticalPhase) return;
-    lastPosition = position;
-    stack.style.setProperty("--scan-front", `${position}%`);
-    const intensity = clamp(progress / 0.12) * clamp((0.97 - progress) / 0.12);
-    stack.style.setProperty("--scan-beam", String(intensity * 0.68));
+    if (progress === lastProgress && hero.dataset.opticalPhase) return;
+    lastProgress = progress;
+    // The engraving replaces the photograph across the whole frame. The
+    // transparent binary marks develop more slowly over that same image.
+    stack.style.setProperty("--engraving-opacity", String(progress));
+    stack.style.setProperty("--binary-opacity", String(progress * progress));
     hero.dataset.opticalPhase = progress === 0 ? "start" : progress === 1 ? "complete" : "scanning";
   }
 

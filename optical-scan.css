@@ -24,42 +24,21 @@
   transform: none;
 }
 
-.optical-scan-plate,
-.optical-scan-boundary {
+.optical-scan-plate {
   position: absolute;
-  display: none;
-  pointer-events: none;
-}
-
-.hero:is([data-optical-phase="scanning"], [data-optical-phase="complete"]) .optical-scan-plate {
-  --scan-edge: var(--scan-front, -9%);
   inset: 0;
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: var(--scan-object-position);
-  clip-path: polygon(0 0, calc(var(--scan-edge) + 8%) 0, calc(var(--scan-edge) - 8%) 100%, 0 100%);
+  pointer-events: none;
+  opacity: var(--engraving-opacity, 0);
+  transition: opacity 100ms linear;
 }
 
-.hero[data-optical-phase="scanning"] .optical-scan-binary {
-  --scan-edge: calc(var(--scan-front, -9%) - 6%);
-}
-
-.hero[data-optical-phase="complete"] .optical-scan-plate {
-  clip-path: none;
-}
-
-.hero[data-optical-phase="scanning"] .optical-scan-boundary {
-  top: 0;
-  left: calc(var(--scan-front, -9%) - 8%);
-  display: block;
-  width: 16%;
-  height: 100%;
-  overflow: visible;
-  opacity: var(--scan-beam, 0);
-  stroke: #ffc196;
-  stroke-width: 0.75;
+.optical-scan-binary {
+  opacity: var(--binary-opacity, 0);
 }
 
 /* Wider screens briefly pin the hero. Portrait uses its native scroll space. */
@@ -70,7 +49,7 @@
 
   .hero[data-optical-scan]::after {
     display: block;
-    height: clamp(8rem, 28svh, 19rem);
+    height: clamp(22rem, 78svh, 58rem);
     content: "";
   }
 
@@ -101,8 +80,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero .optical-scan-stack .optical-scan-plate,
-  .hero .optical-scan-stack .optical-scan-boundary {
+  .hero .optical-scan-stack .optical-scan-plate {
     display: none;
+    transition: none;
   }
 }
