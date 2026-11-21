@@ -16,7 +16,6 @@
   let geometry;
   let frame = 0;
   let lastProgress;
-  let releasedAt;
 
   function loadPlate(name, variant) {
     const plate = new Image();
@@ -32,8 +31,8 @@
     if (motion.matches) {
       delete hero.dataset.opticalScan;
       delete hero.dataset.opticalPhase;
-      restorePin();
       geometry = undefined;
+      lastProgress = undefined;
       return;
     }
 
@@ -52,76 +51,49 @@
       stack.replaceChildren(picture, ...plates);
       active = variant;
       hero.dataset.opticalScan = "ready";
-      if (compact.matches) restorePin();
       measure();
-      updateView();
     } catch {
       cache.delete(variant);
     }
   }
 
   function measure() {
-    if (!hero.dataset.opticalScan || releasedAt !== undefined) return;
-    let start;
-    let end;
-    if (compact.matches) {
-      const artTop = scrollY + study.getBoundingClientRect().top;
-      start = Math.max(0, artTop + study.offsetHeight * 0.45 - innerHeight);
-      end = Math.max(start + 1, artTop);
-    } else {
-      const top = scrollY + hero.getBoundingClientRect().top;
-      const pinnedAt = top - (parseFloat(getComputedStyle(grid).top) || 0);
-      const runway = hero.offsetHeight - grid.offsetHeight;
-      start = Math.max(0, top - innerHeight * 0.15);
-      end = Math.max(start + 1, pinnedAt + runway);
-    }
-    geometry = { start, distance: end - start };
+    if (!hero.dataset.opticalScan) return;
+    const art = study.getBoundingClientRect();
+    const start = Math.max(0, scrollY + art.top + art.height * 0.35 - innerHeight);
+    // The artwork's travel comes from existing content, so the effect adds
+    // no scroll distance. These landmarks themselves are never transformed.
+    const end = scrollY + hero.getBoundingClientRect().bottom + innerHeight * 0.4;
+    geometry = { start, distance: Math.max(1, end - start) };
+    lastProgress = undefined;
     schedule();
   }
 
   function paint() {
     frame = 0;
     if (!geometry) return;
-    if (releasedAt !== undefined && !picture.hidden && scrollY <= releasedAt) {
-      restorePin();
-      measure();
-    }
     const progress = clamp((scrollY - geometry.start) / geometry.distance);
     if (progress === lastProgress && hero.dataset.opticalPhase) return;
     lastProgress = progress;
-    // The engraving replaces the photograph across the whole frame. The
-    // transparent binary marks develop more slowly over that same image.
-    stack.style.setProperty("--engraving-opacity", String(progress));
-    stack.style.setProperty("--binary-opacity", String(progress * progress));
-    hero.dataset.opticalPhase = progress === 0 ? "start" : progress === 1 ? "complete" : "scanning";
+    // Finish becoming linework while there is still enough light to read it.
+    // Only the artwork moves at a different speed from the document.
+    const digital = clamp(progress / 0.67);
+    const travel = progress * geometry.distance;
+    stack.style.setProperty("--engraving-opacity", String(digital));
+    stack.style.setProperty("--binary-opacity", String(digital * digital));
+    stack.style.setProperty("--cable-drift", `${travel * 0.68}px`);
+    stack.style.setProperty("--cable-scale", String(1 - 0.16 * progress));
+    stack.style.setProperty("--cable-opacity", String((1 - progress) ** 1.16));
+    hero.dataset.opticalPhase = digital === 0 ? "start" : digital === 1 ? "complete" : "scanning";
   }
 
   function schedule() {
     if (geometry && !frame) frame = requestAnimationFrame(paint);
   }
 
-  function restorePin() {
-    releasedAt = undefined;
-    hero.removeAttribute("data-optical-section-flow");
-    hero.style.removeProperty("--scan-section-offset");
-  }
-
-  function updateView() {
-    if (!hero.dataset.opticalScan || compact.matches) return;
-    if (picture.hidden && releasedAt === undefined) {
-      // Preserve the figure's position when releasing the desktop pin.
-      const offset = grid.getBoundingClientRect().top - hero.getBoundingClientRect().top;
-      hero.style.setProperty("--scan-section-offset", `${Math.max(0, offset)}px`);
-      hero.setAttribute("data-optical-section-flow", "");
-      releasedAt = scrollY;
-    }
-    schedule();
-  }
-
   const observer = new ResizeObserver(measure);
   observer.observe(study);
   observer.observe(grid);
-  new MutationObserver(updateView).observe(picture, { attributeFilter: ["hidden"] });
   window.addEventListener("scroll", schedule, { passive: true });
   window.addEventListener("resize", measure, { passive: true });
   compact.addEventListener("change", prepare);
