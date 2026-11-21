@@ -34,15 +34,14 @@
   object-position: var(--scan-object-position);
   pointer-events: none;
   opacity: var(--engraving-opacity, 0);
-  transition: opacity 100ms linear;
 }
 
 .optical-scan-binary {
   opacity: var(--binary-opacity, 0);
 }
 
-/* Let the image cross the figure boundary onto the page behind the next
-   section. All text, controls and section boundaries stay in normal flow. */
+/* Only the artwork is attached to the viewport. The figure, its controls
+   and every section retain their natural scroll positions. */
 #main:has(.hero[data-optical-scan]) {
   overflow-x: clip;
   isolation: isolate;
@@ -54,40 +53,124 @@
 }
 
 .hero[data-optical-scan] .optical-scan-stack {
+  position: fixed;
+  top: 0;
+  left: var(--cable-left);
+  width: var(--cable-width);
+  height: var(--cable-height);
   pointer-events: none;
-  transform-origin: right 44%;
-  transform: translate3d(0, var(--cable-drift, 0px), 0) scale(var(--cable-scale, 1));
+  transform-origin: right center;
+  transform: translate3d(0, var(--cable-top), 0) scale(var(--cable-scale, 1));
   opacity: var(--cable-opacity, 1);
 }
 
+.hero[data-optical-scan] .assembly-view img {
+  filter: contrast(var(--cable-contrast, 1)) saturate(var(--cable-contrast, 1));
+}
+
+.hero[data-optical-scan] .study-title {
+  padding: 0.34rem 0.55rem;
+  border-radius: 3px;
+  background: rgb(16 17 17 / 88%);
+  color: #dadad2;
+}
+
+.hero[data-optical-scan]:not([data-optical-phase="start"]) .optical-scan-stack:has(.assembly-view[hidden]) {
+  display: block;
+  opacity: var(--section-cable-opacity, 0);
+}
+
 .hero[data-optical-scan] ~ .clock-strip,
-.hero[data-optical-scan] ~ .practice {
+.hero[data-optical-scan] ~ .practice,
+.hero[data-optical-scan] ~ .field-notes,
+#main:has(.hero[data-optical-scan]) + .site-footer {
   position: relative;
   z-index: 1;
 }
 
 .hero[data-optical-scan] ~ .clock-strip {
-  background: rgb(21 22 21 / 94%);
+  background: rgb(21 22 21 / 78%);
+}
+
+.hero[data-optical-scan] ~ .field-notes {
+  background: transparent;
 }
 
 .hero[data-optical-scan] ~ .practice {
-  background: linear-gradient(to bottom, rgb(16 17 17 / 44%), rgb(16 17 17 / 78%) 20rem, var(--bg) 38rem);
+  background: linear-gradient(to bottom, rgb(16 17 17 / 50%), rgb(16 17 17 / 35%) 19rem, transparent 34rem);
+}
+
+.hero[data-optical-scan] ~ .practice .practice-header,
+.hero[data-optical-scan] ~ .field-notes .field-notes__articles {
+  text-shadow: 0 1px 4px #101111, 0 0 12px rgb(16 17 17 / 65%);
+}
+
+.hero[data-optical-scan] ~ .practice .practice-intro {
+  color: #c9c8bf;
 }
 
 .hero[data-optical-scan] ~ .practice .practice-module {
-  background: var(--bg);
+  background: rgb(16 17 17 / 32%);
+}
+
+.hero[data-optical-scan] ~ .practice .practice-figure {
+  background: rgb(20 22 20 / 42%);
 }
 
 @media (max-width: 760px) {
   .optical-scan-stack {
     --scan-object-position: center 54%;
-    mask-image: linear-gradient(180deg, transparent, #000 12%, #000 78%, transparent);
+    mask-image:
+      linear-gradient(90deg, transparent, #000 8%),
+      linear-gradient(180deg, transparent, #000 12%, #000 78%, transparent);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  body:has(.hero) {
+    isolation: isolate;
+  }
+
+  body:has(.hero)::before {
+    content: "";
+    position: fixed;
+    z-index: -1;
+    pointer-events: none;
+    right: 0;
+    top: 45%;
+    transform: translateY(-50%);
+    width: min(58vw, 62rem);
+    aspect-ratio: 3 / 2;
+    background:
+      url("/assets/photonic-binary-desktop.webp?v=79847d54fa") center / cover,
+      url("/assets/photonic-digital-desktop.webp?v=79847d54fa") center / cover;
+    mask-image: linear-gradient(90deg, transparent, black 15%), linear-gradient(0deg, transparent, black 15%, black 85%, transparent);
+    mask-composite: intersect;
+    mix-blend-mode: lighten;
+    opacity: 0.30;
+  }
+
+  .hero, .masthead:has(+ main .hero) {
+    background: var(--bg);
+  }
+
+  .hero ~ .field-notes {
+    background: transparent;
+  }
+
+  .hero ~ .practice .practice-figure {
+    background: rgb(20 22 20 / 55%);
+  }
+
   .hero .optical-scan-stack .optical-scan-plate {
     display: none;
-    transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) and (max-width: 760px) {
+  body:has(.hero)::before {
+    width: 86vw;
+    top: 56%;
+    background-image: url("/assets/photonic-binary-mobile.webp?v=79847d54fa"), url("/assets/photonic-digital-mobile.webp?v=79847d54fa");
   }
 }
